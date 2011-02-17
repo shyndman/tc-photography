@@ -177,11 +177,11 @@ header {
 	margin-top: 20px;
 }
 
-nav {
+.page-nav {
 	margin: 25px 0 0 380px;
 }
 
-nav a {
+.page-nav a {
 	color: #C5C5C5;
 	font-size: 10px;
 	text-decoration: none;
@@ -191,7 +191,7 @@ nav a {
 	margin-left: 30px;
 }
 
-nav a.selected {
+.page-nav a.selected {
 	color: #000;
 }
 
@@ -205,7 +205,13 @@ nav a.selected {
 	display: block;
 }
 
+.gallery-nav {
+	float: right;
+}
 
+.gallery-nav a {
+	display: block;
+}
 
 
 

@@ -6,17 +6,38 @@ $(function() {
 	$("nav").removeClass("visuallyhidden"); //! DEBUG
 	
 	// navigation
-	var lastNav = null;
-	$("nav a").click(function(evt) {
-		if (lastNav) {
-			lastNav.removeClass("selected");
-			$("#" + lastNav.data("page")).hide();
+	var lastPageMap = {}; // pg classes to last pages within class
+	var selectPage = function(page, cls) {
+		log("selecting nav, page=" + page);
+		
+		var lastPage = lastPageMap[cls];
+		
+		if (lastPage) {
+			$("nav a[data-page=" + lastPage + "]").removeClass("selected");
+			$("#" + lastPage).hide();
 		} else {
 			$("#intro").hide();
 		}
-		var nav = lastNav = $(this).addClass("selected");
-		$("#" + nav.data("page")).show();
-		
+
+		$("nav a[data-page=" + page + "]").addClass("selected");
+		$("#" + page).show();
+
+		lastPageMap[cls] = page;
+	};
+	
+	$("nav a").click(function(evt) {
+		jQuery.history.load($(this).data("page"));
 		return false;
 	});
+	
+	// history management
+	$.history.init(function(hash) {
+		if(hash != "") {
+			// this loop handles multiple levels of page (eg. specific gallery under photos)
+			$.each(hash.split("/"), function(index, value) {
+				selectPage(value, index.toString());				
+			});
+		}
+	},
+	{ unescape: ",/" });
 });

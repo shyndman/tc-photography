@@ -163,16 +163,47 @@ button {  width: auto; overflow: visible; }
 /**
  * Primary styles
  *
- * Author: 
+ * Author: Scott Hyndman
  */
 
+#container {
+	width: 960px;
+	margin: 0 auto;
+}
 
+header {
+	background: transparent url('../images/logo.jpg') no-repeat;
+	height: 107px;
+	margin-top: 20px;
+}
 
+nav {
+	margin: 40px 0 0 443px;
+}
 
+nav a {
+	color: #C5C5C5;
+	font-size: 10px;
+	text-decoration: none;
+	letter-spacing: 7px;
+	display: block;
+	float: left;
+	margin-left: 30px;
+}
 
+nav a.selected {
+	color: #000;
+}
 
+.intro {
+		width: 623px;
+		margin-top: 120px !important;
+}
 
-
+.centered {
+	margin: 0 auto;
+	display: block;
+}
 
 
 

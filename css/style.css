@@ -177,22 +177,15 @@ header {
 	margin-top: 20px;
 }
 
-.page-nav {
+#page-nav {
 	margin: 25px 0 0 380px;
 }
 
-.page-nav a {
-	color: #C5C5C5;
-	font-size: 10px;
-	text-decoration: none;
+#page-nav a {
 	letter-spacing: 7px;
 	display: block;
 	float: left;
 	margin-left: 30px;
-}
-
-.page-nav a.selected {
-	color: #000;
 }
 
 .intro {
@@ -200,23 +193,31 @@ header {
 		margin-top: 120px !important;
 }
 
+#gallery-nav {
+	position: relative;
+	right: 0px;
+	top: 0px;
+}
+
+#gallery-nav a {
+	display: block;
+	margin-bottom: 8px;
+}
+
+a {
+	color: #C5C5C5;
+	font-size: 10px;
+	text-decoration: none;
+}
+
+a.selected {
+	color: #000;
+}
+
 .centered {
 	margin: 0 auto;
 	display: block;
 }
-
-.gallery-nav {
-	float: right;
-}
-
-.gallery-nav a {
-	display: block;
-}
-
-
-
-
-
 
 /**
  * Non-semantic helper classes: please define your styles before this section.

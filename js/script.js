@@ -25,7 +25,7 @@ $(function() {
 		lastPageMap[cls] = page;
 	};
 	
-	$("nav a").click(function(evt) {
+	$("nav a").click(function() {
 		jQuery.history.load($(this).data("page"));
 		return false;
 	});
@@ -40,4 +40,8 @@ $(function() {
 		}
 	},
 	{ unescape: ",/" });
+	
+	$(document).bind("keydown", function(evt) {
+		log(evt);
+	});
 });

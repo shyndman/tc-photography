@@ -3,13 +3,12 @@
 
 
 /* TEAM */
-  <your title>: <your name>
-  Site: 
-  Twitter: 
-  Location: 
+  Software Friend: Scott Hyndman
+  URL: http://www.scotthyndman.com
+  Location: Toronto, Ontario
 
 /* THANKS */
-  Names (& URL): 
+  Names (& URL): Paul Irish, for biolerplating. Love it! (http://paulirish.com/)
 
 /* SITE */
   Standards: HTML5, CSS3

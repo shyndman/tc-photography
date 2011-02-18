@@ -166,6 +166,11 @@ button {  width: auto; overflow: visible; }
  * Author: Scott Hyndman
  */
 
+/* Expand to fill vertically */
+html, body, #container {
+	font-size: 10px;
+}
+
 #container {
 	width: 960px;
 	margin: 0 auto;
@@ -177,15 +182,22 @@ header {
 	margin-top: 20px;
 }
 
-#page-nav {
+#top-nav {
 	margin: 25px 0 0 380px;
 }
 
-#page-nav a {
+#top-nav a {
 	letter-spacing: 7px;
 	display: block;
 	float: left;
 	margin-left: 30px;
+}
+
+#page-title {
+	font-size: 11px;
+	font-weight: bold;
+	margin-top: 20px;
+	margin-left: 50px;
 }
 
 .intro {
@@ -193,21 +205,42 @@ header {
 		margin-top: 120px !important;
 }
 
-#gallery-nav {
-	position: relative;
-	right: 0px;
-	top: 0px;
+#sidebar {
+	float: right;
+	width: 200px;
+	height: 100%;
+	margin-top: 20px;
 }
 
-#gallery-nav a {
+#sidebar .content {
+	margin-top: 60px;
+}
+
+#sidebar .content p {
+	color: #C5C5C5;
+	margin-bottom: 10px;
+}
+
+#sidebar nav {
+	margin-left: 50px;
+}
+
+#sidebar nav a {
 	display: block;
-	margin-bottom: 8px;
+	padding: 6px 0;
 }
 
 a {
 	color: #C5C5C5;
-	font-size: 10px;
 	text-decoration: none;
+}
+
+a:visited {
+	color: #C5C5C5;
+}
+
+a:hover {
+	color: #333;
 }
 
 a.selected {

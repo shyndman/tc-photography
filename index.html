@@ -22,43 +22,116 @@
 
 <body lang="en" >
   <div id="container">
+    
+    <div id="sidebar" class="hidden">
+      <div id="page-title"></div>
+      <!--nav id="side-nav">
+        <a href="#photos/fermes">fermes</a>
+        <a href="#photos/mounds">mounds</a>
+        <a href="#photos/i-remember">I remember</a>
+        <a href="#photos/pin-holes">pin-holes</a>
+        <a href="#photos/suburbia">suburbia</a>
+      </nav-->
+      <div class="content">
+      </div>
+    </div>
+    
     <header>
-			<h1 class="ir">Tatiana Chumakova Photography</h1>
-			<nav id="page-nav" style="visuallyhidden">
-				<a href="#" data-page="photos">photos</a>
-				<a href="#" data-page="bio">bio</a>
-				<a href="#" data-page="cv">cv</a>
-				<a href="#" data-page="contact">contact</a>
-			</nav>
+      <h1 class="ir">Tatiana Chumakova Photography</h1>
+      <nav id="top-nav" style="visuallyhidden">
+        <a href="#photos" id="nav-photos">photos</a>
+        <a href="#bio" id="nav-bio">bio</a>
+        <a href="#cv" id="nav-cv">cv</a>
+        <a href="#contact" id="nav-contact">contact</a>
+      </nav>
     </header>
+
     <div id="main" role="main">
-			<div id="intro">
-				<img src="images/index_triptych.jpg" alt="Mounds Triptych" class="intro centered">
-			</div>
-			
-			<div id="photos" style="display:none;">
-				<img src="images/mounds/fall/02_financial_drive_brampton2.jpg" alt="Mounds cover image" class="centered">
-				
-				<nav id="gallery-nav">
-					<a href="#" data-page="photos/fermes">fermes</a>
-					<a href="#" data-page="photos/mounds">mounds</a>
-					<a href="#" data-page="photos/iremember">I remember</a>
-					<a href="#" data-page="photos/pin-holes">pin-holes</a>
-					<a href="#" data-page="photos/suburbia">suburbia</a>
-				</nav>
-			</div>
-			
-			<div id="bio" style="display:none;">
-				bio
-			</div>
-			<div id="cv" style="display:none;">
-				cv
-			</div>
-			<div id="contact" style="display:none;">
-				contact
-			</div>
+      <div id="intro" class="hidden">
+        <img src="images/index_triptych.jpg" alt="Mounds Triptych" class="intro centered">
+      </div>
+      
+      <div id="photos" class="hidden">
+        <img src="images/mounds/fall/02_financial_drive_brampton2.jpg" alt="Mounds cover image" class="centered">
+      </div>
+      
+      <div id="bio" class="hidden">
+        bio
+      </div>
+      <div id="cv" class="hidden">
+        cv
+      </div>
+      <div id="contact" class="hidden">
+        contact
+      </div>
     </div>
   </div>
+
+  <!-- Site content -->
+  <script>
+    tcp = {}; // package to avoid window pollution
+    tcp.siteContent = {
+      intro: {},
+      photos: {
+        title: 'photo projects',
+        sidebar: 'children',
+        navLink: 'nav-photos',
+        
+        children: {
+          fermes: {
+            hoverImgSrc: 'images/fermes/silvia.jpg',
+            sidebar: 'html',
+            sidebarHtml: "<p>Fermes description.</p>",
+            
+            photos: [
+            
+            ]
+          },
+          mounds: {
+            hoverImgSrc: 'images/mounds/fall/02_financial_drive_brampton2.jpg',
+            sidebar: 'html',
+            sidebarHtml: "<p>The focus of this project is to document human manipulation of land.</p>" +
+            "<p>Since the beginning of civilization, people strove to tame and control nature. By shaping environments according to their whim, people proclaim dominion over the Earth. I am greatly interested in the forces that necessitate the alteration of land and the bizarre landscapes that result.</p>" +
+            "<p>The images in this series depict mounds of topsoil at suburban sites. They are created through the process of topsoil removal in preparation for building new homes.</p>" +
+            "<p>The piles represent an inexcusable mismanagement of resources. Two thirds of Canada's Grade A soil can be seen from the CN Tower. These images are taken just north of Toronto, where rapid construction continues to pave over farmland.</p>" +
+            "<p>These mounds of topsoil denote a giant cleft between humanity and nature. For thousands of years, soil has been treasured for its potential to feed generations. Only a century ago, the process of topsoil removal would represent a greater calamity than any natural disaster. Today, no one notices how the soil is scrapped of and trucked away. The disregard for topsoil shows that it has been totally devalued.</p>" +
+            "<p>By giving piles of soil prominent positions within the frames, the project asks the viewers to consider the phenomenon of man's alteration of land and the value of soil.</p>",
+            
+            photos: [
+            
+            ]
+          },
+          'i-remember': {
+            title: 'I remember',
+            hoverImgSrc: 'images/i-remember/01_i_remember.jpg',
+            sidebar: 'html',
+            sidebarHtml: "<p>I remember description. This is some more text.</p><p>Another paragraph</p>",
+            
+            photos: [
+            
+            ]
+          }/*, !!! no pictures yet
+          'pin-holes': {
+            sidebar: 'html',
+            sidebarHtml: "<p>Pin-holes description. This is some more text.</p><p>Another paragraph</p>"
+          },
+          suburbia: {
+            sidebar: 'html',
+            sidebarHtml: "<p>Suburbia description. This is some more text.</p><p>Another paragraph</p>"
+          }*/
+        }
+      },
+      bio: {
+        navLink: 'nav-bio',
+      },
+      cv: {
+        navLink: 'nav-cv',
+      },
+      contact: {
+        navLink: 'nav-contact',
+      }
+    };
+  </script>
 
   <script src="//ajax.googleapis.com/ajax/libs/jquery/1.5.0/jquery.js"></script>
   <script>!window.jQuery && document.write(unescape('%3Cscript src="js/libs/jquery-1.5.0.js"%3E%3C/script%3E'))</script>

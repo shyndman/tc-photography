@@ -2,8 +2,8 @@
 
 $(function() {
   // menu fade-in
-  // $("nav").removeClass("visuallyhidden").hide().delay(1000).fadeIn(1000);
-  $("nav").removeClass("visuallyhidden"); //! DEBUG
+  //$("nav").delay(200).fadeIn(1000);
+  $("nav").show(); //! DEBUG
   
   // navigation
   curPageInfoPath = null;
@@ -50,7 +50,7 @@ $(function() {
           pageDiv.empty().append(pageInfo["defaultHtml"]);
         } 
         else if (pageInfo["photos"]) {
-          pageDiv.empty().append(getGalleryContent(pageInfo));
+          pageDiv.empty().append(getGalleryContent(pageInfo, pagePath));
         }
       }
     }
@@ -115,22 +115,33 @@ $(function() {
   };
   
   /** Gets the gallery master content */
-  var getGalleryContent = function(pageInfo) {
+  var getGalleryContent = function(pageInfo, pagePath) {
     var thumbContainer = $("<div>");
     
     var len = pageInfo.photos.length;
     for (var i = 0; i < len; i++) {
       var photo = pageInfo.photos[i];
+
       
-      var thumb = $("<img>", {
-        src: photo.thumbSrc,
-        "class": "gallery-thumb"
+      var photoLink = $("<a>", {
+        href: "#" + pagePath + "/" + getPhotoBaseName(photo)
       });
       
-      thumbContainer.append(thumb);
+      photoLink.append($("<img>", {
+        src: photo.thumbSrc,
+        "class": "gallery-thumb"
+      }));
+      
+      thumbContainer.append(photoLink);
     }
     
     return thumbContainer;
+  };
+  
+  var getPhotoBaseName = function(photoInfo) {
+    var src = photoInfo.fullSrc;
+    var baseName = src.substr(src.lastIndexOf("/") + 1);
+    return baseName.substr(0, baseName.indexOf("."));
   };
   
   /** Handles the mouseover event on a child navigation element */

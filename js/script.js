@@ -12,6 +12,9 @@ $(function() {
     
     hidePrevPage();
     
+    if (pagePath.charAt(pagePath.length - 1) == '/') 
+      pagePath = pagePath.substring(0, pagePath.length - 1);
+  
     var parts = pagePath.split("/");
     var pageInfoPath = [];
     var pageInfo = null;
@@ -19,11 +22,12 @@ $(function() {
     var len = parts.length;
     for (var i = 0; i < len; i++) {
       var part = parts[i];
+      var pageDiv = pageDiv == undefined ? $("#" + part) : pageDiv;
       var isLast = i + 1 == len;
 
       // get the part's page info
       if (pageInfo == null) pageInfo = tcp.siteContent[part];
-      else pageInfo = pageInfo.children[part];
+      else if (pageInfo["galleries"]) pageInfo = pageInfo.galleries[part];
 
       // inject the id for future reference
       pageInfo.id = part;
@@ -36,11 +40,19 @@ $(function() {
         $("#" + pageInfo["navLink"]).addClass("selected");
       
       // show it
-      $("#" + part).removeClass("hidden");
+      pageDiv.removeClass("hidden");
       
       // prepare the sidebar if applicable (only last page in path gets a sidebar)
-      if (isLast)
+      if (isLast) {
         preparePageSidebar(pageInfo, pagePath);
+        
+        if (pageInfo["defaultHtml"]) {
+          pageDiv.empty().append(pageInfo["defaultHtml"]);
+        } 
+        else if (pageInfo["photos"]) {
+          pageDiv.empty().append(getGalleryContent(pageInfo));
+        }
+      }
     }
     
     curPageInfoPath = pageInfoPath;
@@ -62,9 +74,9 @@ $(function() {
     var content = "";
     
     switch (pageInfo["sidebar"]) {
-    case "children":
-      content = getChildrenNav(pageInfo, pagePath);
-      prepareChildren(pageInfo)
+    case "galleries":
+      content = getGalleriesNav(pageInfo, pagePath);
+      prepareGalleries(pageInfo)
       break;
     case "html":
       content = pageInfo.sidebarHtml;
@@ -83,10 +95,10 @@ $(function() {
   };
   
   /** Gets the nav node for the pageInfo's children */
-  var getChildrenNav = function(pageInfo, pagePath) {
+  var getGalleriesNav = function(pageInfo, pagePath) {
     var navParent = $("<nav>");
-    for (var childId in pageInfo.children) {
-      var childPageInfo = pageInfo.children[childId];
+    for (var childId in pageInfo.galleries) {
+      var childPageInfo = pageInfo.galleries[childId];
       childPageInfo.id = childId; //! Not really the right place for this
       
       var navLink = $("<a>", {
@@ -94,39 +106,50 @@ $(function() {
         text: getPageTitle(childPageInfo)
       });
       navLink.hover(
-        function(evt) {
-          onChildNavOver(childPageInfo, pageInfo, evt);
-        }, 
-        function (evt) {
-          onChildNavOut(childPageInfo, pageInfo, evt)
-        });        
+        _.bind(onChildNavOver, null, childPageInfo, pageInfo),
+        $.noop);        
       navParent.append(navLink);
     }
     
     return navParent;
   };
   
-  /** Handles the mouseover event on a child navigation element */
-  var onChildNavOver = function(pageInfo, parentInfo, evt) {
+  /** Gets the gallery master content */
+  var getGalleryContent = function(pageInfo) {
+    var thumbContainer = $("<div>");
     
+    var len = pageInfo.photos.length;
+    for (var i = 0; i < len; i++) {
+      var photo = pageInfo.photos[i];
+      
+      var thumb = $("<img>", {
+        src: photo.thumbSrc,
+        "class": "gallery-thumb"
+      });
+      
+      thumbContainer.append(thumb);
+    }
+    
+    return thumbContainer;
   };
   
-  /** Handles the mouseout event on a child navigation element */
-  var onChildNavOut = function(pageInfo, parentInfo, evt) {
-    
+  /** Handles the mouseover event on a child navigation element */
+  var onChildNavOver = function(pageInfo, parentInfo, evt) {
+    $("#" + parentInfo.id).empty().append(pageInfo.hoverImg);
   };
   
   /** Prepares the children for display. This may preload images. */
-  var prepareChildren = function(pageInfo) {
-    for (var childId in pageInfo.children) {
-      var childPageInfo = pageInfo.children[childId];
+  var prepareGalleries = function(pageInfo) {
+    for (var childId in pageInfo.galleries) {
+      var childPageInfo = pageInfo.galleries[childId];
       
       // no hover image or we're already preload{ing,ed}
       if (!childPageInfo["hoverImgSrc"] || childPageInfo["hoverImg"])
         continue;
       
       childPageInfo.hoverImg = $("<img>", {
-        src: childPageInfo.hoverImgSrc
+        src: childPageInfo.hoverImgSrc,
+        "class": "cover"
       });
     }
   };

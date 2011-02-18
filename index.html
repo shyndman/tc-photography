@@ -52,7 +52,6 @@
       </div>
       
       <div id="photos" class="hidden">
-        <img src="images/mounds/fall/02_financial_drive_brampton2.jpg" alt="Mounds cover image" class="centered">
       </div>
       
       <div id="bio" class="hidden">
@@ -74,17 +73,42 @@
       intro: {},
       photos: {
         title: 'photo projects',
-        sidebar: 'children',
+        sidebar: 'galleries',
         navLink: 'nav-photos',
+        defaultHtml: '<img src="images/mounds/fall/02_financial_drive_brampton2.jpg" alt="Mounds cover image" class="cover">',
         
-        children: {
+        galleries: {
           fermes: {
             hoverImgSrc: 'images/fermes/silvia.jpg',
             sidebar: 'html',
             sidebarHtml: "<p>Fermes description.</p>",
             
             photos: [
-            
+              {
+                fullSrc: 'images/fermes/field.jpg',
+                thumbSrc: 'images/fermes/field.thumb.jpg',
+                sidebarHtml: ''
+              },
+              {
+                fullSrc: 'images/fermes/grand_tomates.jpg',
+                thumbSrc: 'images/fermes/grand_tomates.thumb.jpg',
+                sidebarHtml: ''
+              },
+              {
+                fullSrc: 'images/fermes/manon2.jpg',
+                thumbSrc: 'images/fermes/manon2.thumb.jpg',
+                sidebarHtml: ''
+              },
+              {
+                fullSrc: 'images/fermes/petit_tournesols.jpg',
+                thumbSrc: 'images/fermes/petit_tournesols.thumb.jpg',
+                sidebarHtml: ''
+              },
+              {
+                fullSrc: 'images/fermes/silvia.jpg',
+                thumbSrc: 'images/fermes/silvia.thumb.jpg',
+                sidebarHtml: ''
+              }
             ]
           },
           mounds: {
@@ -98,7 +122,31 @@
             "<p>By giving piles of soil prominent positions within the frames, the project asks the viewers to consider the phenomenon of man's alteration of land and the value of soil.</p>",
             
             photos: [
-            
+              {
+                fullSrc: 'images/mounds/fall/01_rutherford_road_contact.jpg',
+                thumbSrc: 'images/mounds/fall/01_rutherford_road_contact.thumb.jpg',
+                sidebarHtml: ''
+              },
+              {
+                fullSrc: 'images/mounds/fall/02_financial_drive_brampton2.jpg',
+                thumbSrc: 'images/mounds/fall/02_financial_drive_brampton2.thumb.jpg',
+                sidebarHtml: ''
+              },
+              {
+                fullSrc: 'images/mounds/fall/03_vogellave_richmond_hill.jpg',
+                thumbSrc: 'images/mounds/fall/03_vogellave_richmond_hill.thumb.jpg',
+                sidebarHtml: ''
+              },
+              {
+                fullSrc: 'images/mounds/fall/04_financial_drive_brampton.jpg',
+                thumbSrc: 'images/mounds/fall/04_financial_drive_brampton.thumb.jpg',
+                sidebarHtml: ''
+              },
+              {
+                fullSrc: 'images/mounds/fall/05_financial_drive_brampton3.jpg',
+                thumbSrc: 'images/mounds/fall/05_financial_drive_brampton3.thumb.jpg',
+                sidebarHtml: ''
+              }
             ]
           },
           'i-remember': {
@@ -137,6 +185,7 @@
   <script>!window.jQuery && document.write(unescape('%3Cscript src="js/libs/jquery-1.5.0.js"%3E%3C/script%3E'))</script>
 
   <!-- scripts concatenated and minified via ant build script-->
+  <script src="js/mylibs/underscore-1.1.4.js"></script>
   <script src="js/plugins.js"></script>
   <script src="js/script.js"></script>
   <!-- end concatenated and minified scripts-->

@@ -129,7 +129,9 @@ $(function() {
       
       photoLink.append($("<img>", {
         src: photo.thumbSrc,
-        "class": "gallery-thumb"
+        "class": "gallery-thumb",
+        width: "140px",
+        height: "140px"
       }));
       
       thumbContainer.append(photoLink);

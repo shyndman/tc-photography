@@ -168,29 +168,41 @@ button {  width: auto; overflow: visible; }
 
 /* Expand to fill vertically */
 html, body, #container {
-	font-size: 10px;
+	font-size: 9px;
+	font-family: "Lucida Sans Unicode", "Lucida Grande", "sans-serif";
+	color: #949494;
 }
 
 #container {
 	width: 960px;
 	margin: 0 auto;
+	border: solid magenta 1px;
 }
 
 header {
-	background: transparent url('../images/logo.jpg') no-repeat;
-	height: 107px;
+	background: transparent url('../images/logo.png') no-repeat 30px 0px;
+	height: 87px;
 	margin-top: 20px;
 }
 
 #top-nav {
-	margin: 25px 0 0 380px;
+  font-size: 10px;
+	margin: 32px 0 0 445px;
 }
 
 #top-nav a {
-	letter-spacing: 7px;
+	letter-spacing: 6px;
 	display: block;
 	float: left;
-	margin-left: 30px;
+	margin-left: 27px;
+}
+
+#main {
+  margin-top: 16px;
+}
+
+#intro {
+  margin-top: 50px;
 }
 
 #page-title {
@@ -199,7 +211,6 @@ header {
 	margin-top: 20px;
 	margin-left: 50px;
 }
-
 
 #photos .cover {
   margin-right: 50px;
@@ -222,7 +233,7 @@ header {
 }
 
 #sidebar .content p {
-	color: #AAA;
+	/*color: #AAA;*/
 	margin-bottom: 10px;
 }
 
@@ -236,7 +247,7 @@ header {
 }
 
 a {
-	color: #C5C5C5;
+	/*color: #C5C5C5;*/
 	text-decoration: none;
 }
 
@@ -246,10 +257,6 @@ a:visited {
 
 a:hover {
 	color: #333;
-}
-
-a.selected {
-	color: #000;
 }
 
 .centered {

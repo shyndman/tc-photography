@@ -2,8 +2,22 @@
 
 $(function() {
   // menu fade-in
-  //$("nav").delay(200).fadeIn(1000);
-  $("nav").show(); //! DEBUG
+    
+  var showMenu = function() {
+    $("#page-title").fadeTo(200, 0);
+    $("#menu-label").fadeOut(100, function() {
+      $("#top-nav-links").fadeIn(500);
+    })
+  };
+  
+  var hideMenu = function() {
+    $("#top-nav-links").fadeOut(300, function() {
+      $("#menu-label").fadeIn(100);
+      $("#page-title").fadeTo(300, 1);
+    })
+  };
+
+  $("#top-nav").hover(showMenu, hideMenu);
   
   // navigation
   curPageInfoPath = null;
@@ -28,6 +42,7 @@ $(function() {
       // get the part's page info
       if (pageInfo == null) pageInfo = tcp.siteContent[part];
       else if (pageInfo["galleries"]) pageInfo = pageInfo.galleries[part];
+      else if (pageInfo["photos"]) pageInfo = pageInfo.photos[part];
 
       // inject the id for future reference
       pageInfo.id = part;
@@ -46,11 +61,15 @@ $(function() {
       if (isLast) {
         preparePageSidebar(pageInfo, pagePath);
         
+        //! this isn't very smart -- we should have a single child concept
         if (pageInfo["defaultHtml"]) {
           pageDiv.empty().append(pageInfo["defaultHtml"]);
         } 
         else if (pageInfo["photos"]) {
           pageDiv.empty().append(getGalleryContent(pageInfo, pagePath));
+        }
+        else if (pageInfo["fullSrc"]) {
+          pageDiv.empty().append(getPhotoContent(pageInfo, pagePath));
         }
       }
     }
@@ -116,15 +135,16 @@ $(function() {
   
   /** Gets the gallery master content */
   var getGalleryContent = function(pageInfo, pagePath) {
-    var thumbContainer = $("<div>");
+    var thumbContainer = $("<div>", {
+      "class": "gallery"
+    });
     
-    var len = pageInfo.photos.length;
-    for (var i = 0; i < len; i++) {
-      var photo = pageInfo.photos[i];
+    for (var childId in pageInfo.photos) {
+      var photo = pageInfo.photos[childId];
+      photo.id = childId;
 
-      
       var photoLink = $("<a>", {
-        href: "#" + pagePath + "/" + getPhotoBaseName(photo)
+        href: "#" + pagePath + "/" + childId
       });
       
       photoLink.append($("<img>", {
@@ -138,12 +158,6 @@ $(function() {
     }
     
     return thumbContainer;
-  };
-  
-  var getPhotoBaseName = function(photoInfo) {
-    var src = photoInfo.fullSrc;
-    var baseName = src.substr(src.lastIndexOf("/") + 1);
-    return baseName.substr(0, baseName.indexOf("."));
   };
   
   /** Handles the mouseover event on a child navigation element */
@@ -160,11 +174,21 @@ $(function() {
       if (!childPageInfo["hoverImgSrc"] || childPageInfo["hoverImg"])
         continue;
       
-      childPageInfo.hoverImg = $("<img>", {
+      var img = $("<img>", {
         src: childPageInfo.hoverImgSrc,
-        "class": "cover"
+        "class": "gallery-full"
       });
+      childPageInfo.hoverImg = $("<a>", {
+        href: "#" + pageInfo.id + "/" + childId
+      }).append(img);
     }
+  };
+  
+  var getPhotoContent = function(pageInfo, pagePath) {
+    return $("<img>", {
+      src: pageInfo.fullSrc,
+      "class": "gallery-full"
+    });
   };
   
   /** Performs all necessary visual cleanup page to remove traces of the previously shown page */

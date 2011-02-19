@@ -29,11 +29,17 @@
     
     <header>
       <h1 class="ir">Tatiana Chumakova Photography</h1>
-      <nav id="top-nav" style="display:none">
-        <a href="#photos" id="nav-photos">photos</a>
-        <a href="#bio" id="nav-bio">bio</a>
-        <a href="#cv" id="nav-cv">cv</a>
-        <a href="#contact" id="nav-contact">contact</a>
+      <a id="logo-link" href="#"> </a>
+      <nav id="top-nav">
+        <div id="menu-label">
+          menu
+        </div>
+        <div id="top-nav-links" style="display:none">
+          <a href="#photos" id="nav-photos" class="first">photos</a>
+          <a href="#bio" id="nav-bio">bio</a>
+          <a href="#cv" id="nav-cv">cv</a>
+          <a href="#contact" id="nav-contact">contact</a>
+        </div>
       </nav>
     </header>
 
@@ -66,7 +72,7 @@
         title: 'photo projects',
         sidebar: 'galleries',
         navLink: 'nav-photos',
-        defaultHtml: '<img src="images/mounds/fall/02_financial_drive_brampton2.jpg" alt="Mounds cover image" class="cover">',
+        defaultHtml: '<a href="#photos/mounds"><img src="images/mounds/fall/02_financial_drive_brampton2.jpg" alt="Mounds cover image" class="gallery-full"></a>',
         
         galleries: {
           fermes: {
@@ -74,33 +80,43 @@
             sidebar: 'html',
             sidebarHtml: "<p>Fermes description.</p>",
             
-            photos: [
-              {
+            photos: {
+              field: {
                 fullSrc: 'images/fermes/field.jpg',
                 thumbSrc: 'images/fermes/field.thumb.jpg',
-                sidebarHtml: ''
+                title: '$use_parent',
+                sidebar: 'html',
+                sidebarHtml: 'Financial Drive<br>Brampton, Ontario: 2004'
               },
-              {
+              grand_tomates: {
                 fullSrc: 'images/fermes/grand_tomates.jpg',
                 thumbSrc: 'images/fermes/grand_tomates.thumb.jpg',
-                sidebarHtml: ''
+                title: '$use_parent',
+                sidebar: 'html',
+                sidebarHtml: 'Financial Drive<br>Brampton, Ontario: 2004'
               },
-              {
+              manon2: {
                 fullSrc: 'images/fermes/manon2.jpg',
                 thumbSrc: 'images/fermes/manon2.thumb.jpg',
-                sidebarHtml: ''
+                title: '$use_parent',
+                sidebar: 'html',
+                sidebarHtml: 'Financial Drive<br>Brampton, Ontario: 2004'
               },
-              {
+              petit_tournesols: {
                 fullSrc: 'images/fermes/petit_tournesols.jpg',
                 thumbSrc: 'images/fermes/petit_tournesols.thumb.jpg',
-                sidebarHtml: ''
+                title: '$use_parent',
+                sidebar: 'html',
+                sidebarHtml: 'Financial Drive<br>Brampton, Ontario: 2004'
               },
-              {
+              silvia: {
                 fullSrc: 'images/fermes/silvia.jpg',
                 thumbSrc: 'images/fermes/silvia.thumb.jpg',
-                sidebarHtml: ''
+                title: '$use_parent',
+                sidebar: 'html',
+                sidebarHtml: 'Financial Drive<br>Brampton, Ontario: 2004'
               }
-            ]
+            }
           },
           mounds: {
             hoverImgSrc: 'images/mounds/fall/02_financial_drive_brampton2.jpg',
@@ -112,33 +128,43 @@
             "<p>These mounds of topsoil denote a giant cleft between humanity and nature. For thousands of years, soil has been treasured for its potential to feed generations. Only a century ago, the process of topsoil removal would represent a greater calamity than any natural disaster. Today, no one notices how the soil is scrapped of and trucked away. The disregard for topsoil shows that it has been totally devalued.</p>" +
             "<p>By giving piles of soil prominent positions within the frames, the project asks the viewers to consider the phenomenon of man's alteration of land and the value of soil.</p>",
             
-            photos: [
-              {
+            photos: {
+              "01_rutherford_road_contact": {
                 fullSrc: 'images/mounds/fall/01_rutherford_road_contact.jpg',
                 thumbSrc: 'images/mounds/fall/01_rutherford_road_contact.thumb.jpg',
-                sidebarHtml: ''
+                title: '$use_parent',
+                sidebar: 'html',
+                sidebarHtml: 'Financial Drive<br>Brampton, Ontario: 2004'
               },
-              {
+              "02_financial_drive_brampton2": {
                 fullSrc: 'images/mounds/fall/02_financial_drive_brampton2.jpg',
                 thumbSrc: 'images/mounds/fall/02_financial_drive_brampton2.thumb.jpg',
-                sidebarHtml: ''
+                title: '$use_parent',
+                sidebar: 'html',
+                sidebarHtml: 'Financial Drive<br>Brampton, Ontario: 2004'
               },
-              {
+              "03_vogellave_richmond_hill": {
                 fullSrc: 'images/mounds/fall/03_vogellave_richmond_hill.jpg',
                 thumbSrc: 'images/mounds/fall/03_vogellave_richmond_hill.thumb.jpg',
-                sidebarHtml: ''
+                title: '$use_parent',
+                sidebar: 'html',
+                sidebarHtml: 'Financial Drive<br>Brampton, Ontario: 2004'
               },
-              {
+              "04_financial_drive_brampton": {
                 fullSrc: 'images/mounds/fall/04_financial_drive_brampton.jpg',
                 thumbSrc: 'images/mounds/fall/04_financial_drive_brampton.thumb.jpg',
-                sidebarHtml: ''
+                title: '$use_parent',
+                sidebar: 'html',
+                sidebarHtml: 'Financial Drive<br>Brampton, Ontario: 2004'
               },
-              {
+              "05_financial_drive_brampton3": {
                 fullSrc: 'images/mounds/fall/05_financial_drive_brampton3.jpg',
                 thumbSrc: 'images/mounds/fall/05_financial_drive_brampton3.thumb.jpg',
-                sidebarHtml: ''
+                title: '$use_parent',
+                sidebar: 'html',
+                sidebarHtml: 'Financial Drive<br>Brampton, Ontario: 2004'
               }
-            ]
+            }
           },
           'i-remember': {
             title: 'I remember',
@@ -146,9 +172,9 @@
             sidebar: 'html',
             sidebarHtml: "<p>I remember description. This is some more text.</p><p>Another paragraph</p>",
             
-            photos: [
+            photos: {
             
-            ]
+            }
           }/*, !!! no pictures yet
           'pin-holes': {
             sidebar: 'html',
@@ -161,13 +187,13 @@
         }
       },
       bio: {
-        navLink: 'nav-bio',
+        navLink: 'nav-bio'
       },
       cv: {
-        navLink: 'nav-cv',
+        navLink: 'nav-cv'
       },
       contact: {
-        navLink: 'nav-contact',
+        navLink: 'nav-contact'
       }
     };
   </script>
@@ -178,7 +204,7 @@
   <!-- scripts concatenated and minified via ant build script-->
   <script src="js/mylibs/underscore-1.1.4.js"></script>
   <script src="js/plugins.js"></script>
-  <script src="js/script.js?v=2"></script>
+  <script src="js/script.js?v=3"></script>
   <!-- end concatenated and minified scripts-->
   
   <!--[if lt IE 7 ]>

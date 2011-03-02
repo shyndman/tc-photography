@@ -3,24 +3,37 @@
 $(function() {
   // menu fade-in
     
-  var showMenu = function() {
-    $("#page-title").fadeTo(200, 0);
-    $("#menu-label").fadeOut(100, function() {
-      $("#top-nav-links").fadeIn(500);
-    })
+  var menuLbl = $("#menu-label");
+  var pageTitle = $("#page-title");
+  var topNavLinks = $("#top-nav-links");
+  
+  var showMenu = function() { 
+    completeMenuAnimation();
+    pageTitle.fadeTo(100, 0);
+    menuLbl.fadeOut(100);
+    topNavLinks.delay(100).fadeIn(300);
   };
   
   var hideMenu = function() {
-    $("#top-nav-links").fadeOut(300, function() {
-      $("#menu-label").fadeIn(100);
-      $("#page-title").fadeTo(300, 1);
-    })
+    completeMenuAnimation();
+    topNavLinks.fadeOut(200);    
+    menuLbl.delay(300).fadeIn(100);
+    pageTitle.delay(300).fadeTo(100, 1);
+  };
+  
+  /** This prevents wrapping on the nav links */
+  var completeMenuAnimation = function() {
+    pageTitle.stop(true, true);
+    topNavLinks.stop(true, true);
+    menuLbl.stop(true, true);
   };
 
   $("#top-nav").hover(showMenu, hideMenu);
   
   // navigation
-  curPageInfoPath = null;
+  var currentGalleryInfo = null;
+  var inPhotos = false;
+  var curPageInfoPath = null;
   var selectPage = function(pagePath) {
     log("navigating, page=" + pagePath)
     
@@ -28,6 +41,8 @@ $(function() {
     
     if (pagePath.charAt(pagePath.length - 1) == '/') 
       pagePath = pagePath.substring(0, pagePath.length - 1);
+  
+    inPhotos = false;
   
     var parts = pagePath.split("/");
     var pageInfoPath = [];
@@ -42,7 +57,11 @@ $(function() {
       // get the part's page info
       if (pageInfo == null) pageInfo = tcp.siteContent[part];
       else if (pageInfo["galleries"]) pageInfo = pageInfo.galleries[part];
-      else if (pageInfo["photos"]) pageInfo = pageInfo.photos[part];
+      else if (pageInfo["photos"]) {
+        inPhotos = true;
+        currentGalleryInfo = getGalleryInfo(pageInfo, part);
+        pageInfo = pageInfo.photos[part];
+      }
 
       // inject the id for future reference
       pageInfo.id = part;
@@ -59,7 +78,7 @@ $(function() {
       
       // prepare the sidebar if applicable (only last page in path gets a sidebar)
       if (isLast) {
-        preparePageSidebar(pageInfo, pagePath);
+        preparePageSidebar(pageInfo, pagePath, pageInfoPath);
         
         //! this isn't very smart -- we should have a single child concept
         if (pageInfo["defaultHtml"]) {
@@ -77,8 +96,13 @@ $(function() {
     curPageInfoPath = pageInfoPath;
   };
   
+  /** Returns an object representing the current gallery and position */
+  var getGalleryInfo = function(galleryInfo, curPhotoName) {
+    return { gallery: galleryInfo, currentPhoto: curPhotoName };
+  };
+  
   /** Prepares and shows the sidebar for the supplied pageInfo */
-  var preparePageSidebar = function(pageInfo, pagePath) {
+  var preparePageSidebar = function(pageInfo, pagePath, pageInfoPath) {
     var sidebar = $("#sidebar");
     
     if (!pageInfo["sidebar"]) {
@@ -87,7 +111,7 @@ $(function() {
     }
     
     // set the sidebar's title
-    $("#page-title").html(getPageTitle(pageInfo));
+    $("#page-title").html(getPageTitle(pageInfo, pageInfoPath));
     
     // set the sidebar's content
     var content = "";
@@ -109,8 +133,12 @@ $(function() {
   };
   
   /** Gets the page title of the supplied pageInfo */
-  var getPageTitle = function(pageInfo) {
-    return pageInfo["title"] == undefined ? pageInfo.id : pageInfo.title;
+  var getPageTitle = function(pageInfo, pageInfoPath) {
+    return pageInfo["title"] == undefined 
+      ? pageInfo.id 
+      : pageInfo.title == "$use_parent" 
+        ? getPageTitle(pageInfoPath[pageInfoPath.length - 2]) //! bug here if two $use_parents
+        : pageInfo.title;
   };
   
   /** Gets the nav node for the pageInfo's children */
@@ -210,9 +238,22 @@ $(function() {
     selectPage(hash == "" ? "intro" : hash);
   }, { unescape: ",/" });
   
-  /*
-  $(document).bind("keydown", function(evt) {
-    log(evt);
+  // keyboard navigation
+  var showPreviousPhoto = function() {
+  };
+  var showNextPhoto = function() {
+  };
+  
+  $(document).keydown(function(evt) {
+    if (!inPhotos) return false;
+    
+    switch (evt.which) {
+    case 37:
+      showPreviousPhoto();
+      break;
+    case 39:
+      showNextPhoto();
+      break;
+    }
   });
-  */
 });

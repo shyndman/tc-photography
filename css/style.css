@@ -167,10 +167,11 @@ button {  width: auto; overflow: visible; }
  */
 
 /* Expand to fill vertically */
-html, body, #container {
+html, body {
 	font-size: 9px;
 	font-family: "Lucida Sans Unicode", "Lucida Grande", "sans-serif";
 	color: #949494;
+	height: 100%;
 }
 
 #container {
@@ -182,7 +183,7 @@ html, body, #container {
 header {
 	background: transparent url('../images/logo.png') no-repeat 30px 0px;
 	height: 87px;
-	margin-top: 20px;
+  margin-top: 20px;
 }
 
 #logo-link {
@@ -197,9 +198,21 @@ header {
   font-size: 10px;
 	color: #C5C5C5;
 	letter-spacing: 6px;
-	margin: 22px 0 0 445px;
-	padding: 10px 0px;
 	height: 12px;
+	margin: 24px 0 0 0;
+	padding: 20px 0px;
+	float: left;
+}
+
+#menu-label {
+	font-size: 10px;
+	letter-spacing: 10px;
+  text-transform: uppercase;
+	margin-left: 20px;
+}
+
+#top-nav a.first {
+	margin-left: 17px;
 }
 
 #top-nav a {
@@ -208,20 +221,42 @@ header {
 	margin-left: 27px;
 }
 
-#menu-label {
-	margin-left: 40px;
-}
-
-#top-nav a.first {
-	margin-left: 20px;
-}
-
 #main {
   margin-top: 16px;
 }
 
 #intro {
   margin-top: 50px;
+}
+
+#bio {
+  text-align: right;
+  width: 504px;
+  margin-left: 216px;
+}
+
+#bio-pic {
+  margin-top: 9px;
+}
+
+#cv {
+  width: 504px;
+  margin-left: 216px;
+  text-align: right;
+}
+
+#cv h2 {
+  font-weight: normal;
+  text-transform: uppercase;
+}
+
+#contact-email {
+  margin-bottom: 14px;
+  padding-top: 6px;
+}
+
+#contact-email a {
+  color: #949494;
 }
 
 #photos .gallery-full {
@@ -245,17 +280,15 @@ header {
 }
 
 #page-title {
-  margin-top: 43px;
+  margin-top: 44px;
 	font-size: 10px;
 }
 
 #sidebar .content {
 	margin-top: 41px;
-	height: 500px;
 }
 
-#sidebar .content p {
-	/*color: #AAA;*/
+p {
 	margin-bottom: 10px;
 }
 

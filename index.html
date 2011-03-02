@@ -9,7 +9,7 @@
 
   <title>Tatiana Chumakova Photography</title>
 
-  <meta name="description" content="">
+  <meta name="description" content="Tatiana Chumakova is a Russian-born photographer currently based in Toronto. This is her online portfolio of art and commercial projects.">
   <meta name="author" content="Scott Hyndman">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
@@ -28,8 +28,7 @@
     </div>
     
     <header>
-      <h1 class="ir">Tatiana Chumakova Photography</h1>
-      <a id="logo-link" href="#"> </a>
+      <h1><a id="logo-link" href="#" class="ir">Tatiana Chumakova Photography</a></h1>
       <nav id="top-nav">
         <div id="menu-label">
           menu
@@ -44,22 +43,36 @@
     </header>
 
     <div id="main" role="main">
-      <div id="intro" class="hidden">
+      <section id="intro" class="hidden">
         <img src="images/index_triptych.jpg" alt="Mounds Triptych" class="intro centered">
-      </div>
+      </section>
       
-      <div id="photos" class="hidden">
-      </div>
+      <section id="photos" class="hidden">
+      </section>
       
-      <div id="bio" class="hidden">
-        bio
-      </div>
-      <div id="cv" class="hidden">
-        cv
-      </div>
+      <section id="bio" class="hidden">
+        <p>Tatiana is a Russian-born photographer based in Toronto. She graduated from Ryerson University with a Bachelor of Fine Arts in Photography.</p>
+        <p>Her artwork explores social trends – often through landscape photography. She is interested in human relationship to nature. Her work examines the way people inhabit land and the way they alter it. The North-American phenomenon of suburbia is one of the subject matters Tatiana has explored; a theme particularly personal, because she spent her teenage years among the orderly rows of houses. Farming – another subject matter – is one of the oldest and most basic ways people relate to and depend upon nature. Tatiana finds the landscape and gesture of farming wholesome and beautiful.</p>
+        <p>In her photographic work, Tatiana hopes to explore larger issues that impact nature and society through local manifestations.  Her aim is to create images that foster thought and questions. Equally important for her is to create works of esthetic interest, offering the viewer a space of beautiful light, shape and colour to contemplate the underlying topics.</p>
+      </section>
+      <section id="cv" class="hidden">
+        <h2>bio</h2>
+          <div>Born: January 17th, 1984</div>
+          <div>Based: Toronto, Canada</div>
+        <h2>education</h2>
+        <h2>exhibitions</h2>
+        <h2>publications</h2>
+        <h2>fundraisers</h2>
+        <h2>relevant experience</h2>
+      </section>
+      
       <div id="contact" class="hidden">
-        contact
+        <!-- sidebar is in site content JSON -->
       </div>
+      <div id="four-oh-four">
+        
+      </div>
+      <div class="clearfix"/>
     </div>
   </div>
 
@@ -187,13 +200,17 @@
         }
       },
       bio: {
-        navLink: 'nav-bio'
+        navLink: 'nav-bio',
+        sidebar: 'html',
+        sidebarHtml: '<div><img src="images/bio.jpg" alt="Picture of Tanya" id="bio-pic"></div><p>photo by: Nico Oved</p>'
       },
       cv: {
         navLink: 'nav-cv'
       },
       contact: {
-        navLink: 'nav-contact'
+        navLink: 'nav-contact',
+        sidebar: 'html',
+        sidebarHtml: '<div id="contact-email"><a href="mailto:info@tatianachumakova.com">info@tatianachumakova.com</a></div><div id="contact-address">18a busy street<br>toronto, ontario<br>m4m 1n8</p>'
       }
     };
   </script>
@@ -212,12 +229,13 @@
     <script>DD_belatedPNG.fix('img, .png_bg'); // Fix any <img> or .png_bg bg-images. Also, please read goo.gl/mZiyb </script>
   <![endif]-->
 
-  <!--script>
-    var _gaq=[['_setAccount','UA-XXXXX-X'],['_trackPageview']];
+  <!-- Use opt URL http://code.google.com/apis/analytics/docs/gaJS/gaJSApiBasicConfiguration.html#_gat.GA_Tracker_._trackPageview -->
+  <script>
+    var _gaq=[['_setAccount','UA-21547483-1']];
     (function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];g.async=1;
     g.src=('https:'==location.protocol?'//ssl':'//www')+'.google-analytics.com/ga.js';
     s.parentNode.insertBefore(g,s)}(document,'script'));
-  </script-->
+  </script>
   
 </body>
 </html>

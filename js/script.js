@@ -144,6 +144,7 @@ $(function() {
   /** Gets the nav node for the pageInfo's children */
   var getGalleriesNav = function(pageInfo, pagePath) {
     var navParent = $("<nav>");
+    var first = true;
     for (var childId in pageInfo.galleries) {
       var childPageInfo = pageInfo.galleries[childId];
       childPageInfo.id = childId; //! Not really the right place for this
@@ -152,10 +153,13 @@ $(function() {
         href: "#" + pagePath + "/" + childId,
         text: getPageTitle(childPageInfo)
       });
+      
       navLink.hover(
         _.bind(onChildNavOver, null, childPageInfo, pageInfo),
         $.noop);        
       navParent.append(navLink);
+      
+      first = false;
     }
     
     return navParent;

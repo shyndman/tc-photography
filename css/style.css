@@ -285,11 +285,15 @@ header {
 }
 
 #sidebar .content {
-	margin-top: 41px;
+	margin-top: 46px;
 }
 
 p {
 	margin-bottom: 10px;
+}
+
+#sidebar nav {
+  margin-top: -6px;
 }
 
 #sidebar nav a {

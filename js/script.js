@@ -165,20 +165,24 @@ $(function() {
       }
       
       var navLink = $("<a>", {
-        href: "#" + pagePath + "/" + childId,
+        href: childPageInfo.href ? childPageInfo.href : "#" + pagePath + "/" + childId,
         text: getPageTitle(childPageInfo, null, true),
         className: linkCls
       });
       
+      // custom CSS class
       if (childPageInfo.navCssClass != undefined) {
         navLink.addClass(childPageInfo.navCssClass);
       }
       
-      navLink.hover(
-        _.bind(onChildNavOver, null, childPageInfo, pageInfo),
-        $.noop);        
-      navParent.append(navLink);
+      // If we have a hover img, set it up to show on rollover
+      if (childPageInfo.hoverImgSrc) {
+        navLink.hover(
+          _.bind(onChildNavOver, null, childPageInfo, pageInfo),
+          $.noop);        
+      }
       
+      navParent.append(navLink);
       first = false;
     }
     

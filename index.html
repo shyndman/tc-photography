@@ -51,6 +51,8 @@
       
       <section id="photos" class="hidden">
       </section>
+      <section id="commercial" class="hidden">
+      </section>
       
       <section id="bio" class="hidden">
         <p>Tatiana is a Russian-born photographer based in Toronto. She graduated from Ryerson University with a Bachelor of Fine Arts in Photography.</p>
@@ -186,7 +188,7 @@
           },
           
           "mounds:winter": {
-            hoverImgSrc: 'images/mounds/fall/02_financial_drive_brampton2.jpg',
+            hoverImgSrc: 'images/mounds/winter/mounds.winter.cover.jpg',
             sidebar: 'html',
             sidebarHtml: "<p>The focus of this project is to document human manipulation of land.</p>" +
             "<p>Since the beginning of civilization, people strove to tame and control nature. By shaping environments according to their whim, people proclaim dominion over the Earth. I am greatly interested in the forces that necessitate the alteration of land and the bizarre landscapes that result.</p>" +
@@ -196,40 +198,47 @@
             "<p>By giving piles of soil prominent positions within the frames, the project asks the viewers to consider the phenomenon of man's alteration of land and the value of soil.</p>",
             
             photos: {
-              "01_rutherford_road_contact": {
-                fullSrc: 'images/mounds/fall/01_rutherford_road_contact.jpg',
-                thumbSrc: 'images/mounds/fall/01_rutherford_road_contact.thumb.jpg',
+              "01_side_road_17_pefferlaw": {
+                fullSrc: 'images/mounds/winter/01_side_road_17_pefferlaw.jpg',
+                thumbSrc: 'images/mounds/winter/01_side_road_17_pefferlaw.thumb.jpg',
                 title: '$use_parent',
                 sidebar: 'html',
-                sidebarHtml: 'Rutherford Road<br>Richmond Hill. 2007'
+                sidebarHtml: 'Sideroad 17, Pefferlaw. 2008'
               },
-              "02_financial_drive_brampton2": {
-                fullSrc: 'images/mounds/fall/02_financial_drive_brampton2.jpg',
-                thumbSrc: 'images/mounds/fall/02_financial_drive_brampton2.thumb.jpg',
+              "02_vogell_road_richmond_hill": {
+                fullSrc: 'images/mounds/winter/02_vogell_road_richmond_hill.jpg',
+                thumbSrc: 'images/mounds/winter/02_vogell_road_richmond_hill.thumb.jpg',
                 title: '$use_parent',
                 sidebar: 'html',
-                sidebarHtml: 'Financial Drive<br>Brampton, Ontario: 2004'
+                sidebarHtml: 'Vogell Rd, Richmond Hill. 2008'
               },
-              "03_vogellave_richmond_hill": {
-                fullSrc: 'images/mounds/fall/03_vogellave_richmond_hill.jpg',
-                thumbSrc: 'images/mounds/fall/03_vogellave_richmond_hill.thumb.jpg',
+              "03_vogell_road_richmond_hill": {
+                fullSrc: 'images/mounds/winter/03_vogell_road_richmond_hill.jpg',
+                thumbSrc: 'images/mounds/winter/03_vogell_road_richmond_hill.thumb.jpg',
                 title: '$use_parent',
                 sidebar: 'html',
-                sidebarHtml: 'Financial Drive<br>Brampton, Ontario: 2004'
+                sidebarHtml: 'Vogell Rd, Richmond Hill. 2008'
               },
-              "04_financial_drive_brampton": {
-                fullSrc: 'images/mounds/fall/04_financial_drive_brampton.jpg',
-                thumbSrc: 'images/mounds/fall/04_financial_drive_brampton.thumb.jpg',
+              "04_vogell_road_richmond_hill": {
+                fullSrc: 'images/mounds/winter/04_vogell_road_richmond_hill.jpg',
+                thumbSrc: 'images/mounds/winter/04_vogell_road_richmond_hill.thumb.jpg',
                 title: '$use_parent',
                 sidebar: 'html',
-                sidebarHtml: 'Financial Drive<br>Brampton, Ontario: 2004'
+                sidebarHtml: 'Vogell Rd, Richmond Hill. 2008'
               },
-              "05_financial_drive_brampton3": {
-                fullSrc: 'images/mounds/fall/05_financial_drive_brampton3.jpg',
-                thumbSrc: 'images/mounds/fall/05_financial_drive_brampton3.thumb.jpg',
+              "05_16th_ave_richmond_hill": {
+                fullSrc: 'images/mounds/winter/05_16th_ave_richmond_hill.jpg',
+                thumbSrc: 'images/mounds/winter/05_16th_ave_richmond_hill.thumb.jpg',
                 title: '$use_parent',
                 sidebar: 'html',
-                sidebarHtml: 'Financial Drive<br>Brampton, Ontario: 2004'
+                sidebarHtml: '16th Ave., Richmond Hill. 2008'
+              },
+              "06_vogell_road_richmond_hill": {
+                fullSrc: 'images/mounds/winter/06_vogell_road_richmond_hill.jpg',
+                thumbSrc: 'images/mounds/winter/06_vogell_road_richmond_hill.thumb.jpg',
+                title: '$use_parent',
+                sidebar: 'html',
+                sidebarHtml: 'Vogell Rd, Richmond Hill. 2008'
               }
             }
           },
@@ -257,6 +266,19 @@
               }
             }
           },
+          
+          "commercial work": {
+            navCssClass: "commercial-link",
+            href: "#commercial"
+          }
+        }
+      },
+      
+      "commercial": {
+        title: "commercial work",
+        sidebar: 'galleries',
+        defaultHtml: '<a href="#commercial/food/"><img src="images/food/food.cover.jpg" alt="Food cover image" class="gallery-full"></a>',
+        galleries: {
           food: {
             hoverImgSrc: 'images/food/food.cover.jpg',
             navCssClass: 'first-commercial',
@@ -327,7 +349,7 @@
       bio: {
         navLink: 'nav-bio',
         sidebar: 'html',
-        sidebarHtml: '<div><img src="images/bio.jpg" alt="Picture of Tanya" id="bio-pic"></div><p>photo by: Nico Oved</p>'
+        sidebarHtml: '<div><img src="images/bio.jpg" alt="Picture of Tanya" id="bio-pic"></div><p class="credits">photo by: Nico Oved</p>'
       },
       
       cv: {

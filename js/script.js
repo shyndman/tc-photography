@@ -133,9 +133,10 @@ $(function() {
   };
   
   /** Gets the page title of the supplied pageInfo */
-  var getPageTitle = function(pageInfo, pageInfoPath) {
+  var getPageTitle = function(pageInfo, pageInfoPath, isNav) {
+    var pageIdParts = pageInfo.id.split(":"); // for grouped galleries
     return pageInfo["title"] == undefined 
-      ? pageInfo.id 
+      ? isNav ? pageIdParts[pageIdParts.length - 1] : pageIdParts.join(" - ")
       : pageInfo.title == "$use_parent" 
         ? getPageTitle(pageInfoPath[pageInfoPath.length - 2]) //! bug here if two $use_parents
         : pageInfo.title;
@@ -145,14 +146,33 @@ $(function() {
   var getGalleriesNav = function(pageInfo, pagePath) {
     var navParent = $("<nav>");
     var first = true;
+    var group, linkCls = "";
+    
     for (var childId in pageInfo.galleries) {
       var childPageInfo = pageInfo.galleries[childId];
       childPageInfo.id = childId; //! Not really the right place for this
       
+      var groupAndId = childId.split(":");
+
+      if (groupAndId.length == 2) {
+        if (group != groupAndId[0]) { // insert a group header
+          group = groupAndId[0];
+          linkCls = "grouped";
+          navParent.append($("<h4>", { text: group }));
+        }
+      } else {
+        linkCls = "";
+      }
+      
       var navLink = $("<a>", {
         href: "#" + pagePath + "/" + childId,
-        text: getPageTitle(childPageInfo)
+        text: getPageTitle(childPageInfo, null, true),
+        className: linkCls
       });
+      
+      if (childPageInfo.navCssClass != undefined) {
+        navLink.addClass(childPageInfo.navCssClass);
+      }
       
       navLink.hover(
         _.bind(onChildNavOver, null, childPageInfo, pageInfo),
@@ -249,15 +269,17 @@ $(function() {
   };
   
   $(document).keydown(function(evt) {
-    if (!inPhotos) return false;
+    if (!inPhotos) return true;
     
     switch (evt.which) {
     case 37:
       showPreviousPhoto();
-      break;
+      return false;
     case 39:
       showNextPhoto();
-      break;
+      return false;
     }
+    
+    return true; // default behaviour if we haven't taken over
   });
 });

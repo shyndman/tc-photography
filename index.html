@@ -1,8 +1,8 @@
 <!doctype html>  
-<!--[if lt IE 7 ]> <html class="no-js ie6"> <![endif]-->
-<!--[if IE 7 ]>    <html class="no-js ie7"> <![endif]-->
-<!--[if IE 8 ]>    <html class="no-js ie8"> <![endif]-->
-<!--[if (gte IE 9)|!(IE)]><!--> <html class="no-js"> <!--<![endif]-->
+<!--[if lt IE 7 ]><html class="no-js ie6"><![endif]-->
+<!--[if IE 7 ]><html class="no-js ie7"><![endif]-->
+<!--[if IE 8 ]><html class="no-js ie8"><![endif]-->
+<!--[if (gte IE 9)|!(IE)]><!--><html class="no-js"> <!--<![endif]-->
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
@@ -44,7 +44,9 @@
 
     <div id="main" role="main">
       <section id="intro" class="hidden">
-        <img src="images/index_triptych.jpg" alt="Mounds Triptych" class="intro centered">
+        <a href="#photos">
+          <img src="images/index_triptych.jpg" alt="Mounds Triptych" class="intro centered">
+        </a>
       </section>
       
       <section id="photos" class="hidden">
@@ -82,11 +84,12 @@
     tcp = {}; // package to avoid window pollution
     tcp.siteContent = {
       intro: {},
+      
       photos: {
         title: 'photo projects',
         sidebar: 'galleries',
         navLink: 'nav-photos',
-        defaultHtml: '<a href="#photos/mounds"><img src="images/mounds/fall/02_financial_drive_brampton2.jpg" alt="Mounds cover image" class="gallery-full"></a>',
+        defaultHtml: '<a href="#photos/mounds:fall"><img src="images/mounds/fall/02_financial_drive_brampton2.jpg" alt="Mounds cover image" class="gallery-full"></a>',
         
         galleries: {
           fermes: {
@@ -133,7 +136,7 @@
             }
           },
           
-          "mounds - fall": {
+          "mounds:fall": {
             hoverImgSrc: 'images/mounds/fall/02_financial_drive_brampton2.jpg',
             sidebar: 'html',
             sidebarHtml: "<p>The focus of this project is to document human manipulation of land.</p>" +
@@ -182,7 +185,7 @@
             }
           },
           
-          "mounds - winter": {
+          "mounds:winter": {
             hoverImgSrc: 'images/mounds/fall/02_financial_drive_brampton2.jpg',
             sidebar: 'html',
             sidebarHtml: "<p>The focus of this project is to document human manipulation of land.</p>" +
@@ -234,7 +237,8 @@
           unknown: {
             hoverImgSrc: 'images/unknown/01_unknown.jpg',
             sidebar: 'html',
-            sidebarHtml: "<p>I remember description. This is some more text.</p><p>Another paragraph</p>",
+            sidebarHtml: "<p>These images depict nude people inhabiting altered landscapes. There is a stark contrast between the vulnerability of the naked body and the rough industrial landscape. Although the landscapes are man-made, some forms appear natural, like mountainous hills or soft-rolling dunes. The light of the sun is warm and tender.</p>" +
+            "<p>The aim of the work is to contemplate the type of environments industry creates – environments that people themselves cannot comfortably inhabit.</p>",
             
             photos: {
               "01_unknown": {
@@ -242,25 +246,81 @@
                 thumbSrc: 'images/unknown/01_unknown.thumb.jpg',
                 title: '$use_parent',
                 sidebar: 'html',
-                sidebarHtml: '&nbsp;'
+                sidebarHtml: 'Construction Landfill<br>Leslie Spit. Toronto: 2007'
               },
               "02_unknown": {
                 fullSrc: 'images/unknown/02_unknown.jpg',
                 thumbSrc: 'images/unknown/02_unknown.thumb.jpg',
                 title: '$use_parent',
                 sidebar: 'html',
+                sidebarHtml: 'Road Salt<br>Commissioners Street industrial area. Toronto 2007'
+              }
+            }
+          },
+          food: {
+            hoverImgSrc: 'images/food/food.cover.jpg',
+            navCssClass: 'first-commercial',
+            sidebar: 'html',
+            sidebarHtml: "&nbsp;",
+            photos: {
+              "pomegranate_clementines": {
+                fullSrc: 'images/food/pomegranate_clementines.jpg',
+                thumbSrc: 'images/food/pomegranate_clementines.thumb.jpg',
+                title: '$use_parent',
+                sidebar: 'html',
+                sidebarHtml: '&nbsp;'
+              },
+              "pomegranate": {
+                fullSrc: 'images/food/pomegranate.jpg',
+                thumbSrc: 'images/food/pomegranate.thumb.jpg',
+                title: '$use_parent',
+                sidebar: 'html',
+                sidebarHtml: '&nbsp;'
+              },
+              "salad": {
+                fullSrc: 'images/food/salad.jpg',
+                thumbSrc: 'images/food/salad.thumb.jpg',
+                title: '$use_parent',
+                sidebar: 'html',
+                sidebarHtml: '&nbsp;'
+              },
+              "cheese": {
+                fullSrc: 'images/food/cheese.jpg',
+                thumbSrc: 'images/food/cheese.thumb.jpg',
+                title: '$use_parent',
+                sidebar: 'html',
+                sidebarHtml: '&nbsp;'
+              },
+              "sandwich": {
+                fullSrc: 'images/food/sandwich.jpg',
+                thumbSrc: 'images/food/sandwich.thumb.jpg',
+                title: '$use_parent',
+                sidebar: 'html',
+                sidebarHtml: '&nbsp;'
+              },
+              "wakamama": {
+                fullSrc: 'images/food/wakamama.jpg',
+                thumbSrc: 'images/food/wakamama.thumb.jpg',
+                title: '$use_parent',
+                sidebar: 'html',
                 sidebarHtml: '&nbsp;'
               }
             }
-          }/*, !!! no pictures yet
-          'pin-holes': {
-            sidebar: 'html',
-            sidebarHtml: "<p>Pin-holes description. This is some more text.</p><p>Another paragraph</p>"
           },
-          suburbia: {
+          commercial: {
+            hoverImgSrc: 'images/commercial/commercial.cover.jpg',
             sidebar: 'html',
-            sidebarHtml: "<p>Suburbia description. This is some more text.</p><p>Another paragraph</p>"
-          }*/
+            sidebarHtml: "&nbsp;",
+            photos: {
+              "sneakers": {
+                fullSrc: 'images/commercial/sneakers.jpg',
+                thumbSrc: 'images/commercial/sneakers.thumb.jpg',
+                title: '$use_parent',
+                sidebar: 'html',
+                sidebarHtml: '&nbsp;'
+              }
+            }
+          }
         }
       },
       

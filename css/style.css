@@ -301,6 +301,20 @@ p {
 	padding: 6px 0;
 }
 
+#sidebar nav a.grouped {
+  margin-left: 16px;
+}
+
+#sidebar nav h4 {
+  color: #B0B0B0;
+	padding: 6px 0;
+	font-weight: normal;
+}
+
+#sidebar nav a.first-commercial {
+  margin-top: 300px;
+}
+
 a {
 	color: #C5C5C5;
 	text-decoration: none;

@@ -254,6 +254,10 @@ header {
   text-transform: uppercase;
 }
 
+#download-cv {
+  margin-top: 60px;
+}
+
 #contact-email {
   margin-bottom: 14px;
   padding-top: 6px;

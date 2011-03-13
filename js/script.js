@@ -265,12 +265,57 @@ $(function() {
   $.history.init(function(hash) {
     selectPage(hash == "" ? "intro" : hash);
   }, { unescape: ",/" });
-  
-  // keyboard navigation
-  var showPreviousPhoto = function() {
-  };
+
+  /** Shows the next photo */
   var showNextPhoto = function() {
+    var path = _.pluck(curPageInfoPath.slice(0, curPageInfoPath.length - 1), "id").join("/");
+    path += "/" + getNextPhotoId();
+    
+    window.location.hash = path;
   };
+  
+  /** Shows the previous photo */
+  var showPreviousPhoto = function() {
+    var path = _.pluck(curPageInfoPath.slice(0, curPageInfoPath.length - 1), "id").join("/");
+    path += "/" + getPreviousPhotoId();   
+    
+    window.location.hash = path;
+  };
+
+  /** Gets the identifier of the previous photo in the current gallery */
+  var getPreviousPhotoId = function() {
+    var curPhotoId = curPageInfoPath[curPageInfoPath.length - 1].id;
+    var lastPhotoId;
+    for (var photoId in currentGalleryInfo.gallery.photos) {
+      if (curPhotoId == photoId && lastPhotoId != undefined)
+        return lastPhotoId;
+      
+      lastPhotoId = photoId;
+    }
+    
+    return lastPhotoId;
+  };
+  
+  /** Gets the identifier of the next photo in the current gallery */
+  var getNextPhotoId = function() {
+    var curPhotoId = curPageInfoPath[curPageInfoPath.length - 1].id;
+    var firstPhotoId;
+    var returnNext = false;
+    
+    for (var photoId in currentGalleryInfo.gallery.photos) {
+      if (returnNext)
+        return photoId;
+      
+      if (photoId == curPhotoId) 
+        returnNext = true;
+      if (firstPhotoId == undefined)
+        firstPhotoId = photoId;
+    }
+    
+    return firstPhotoId;
+  };
+
+  // keyboard navigation
   
   $(document).keydown(function(evt) {
     if (!inPhotos) return true;

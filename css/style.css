@@ -233,6 +233,7 @@ header {
   text-align: justify;
   width: 504px;
 	color: #9B9B9B;
+  line-height: 14px;
   margin-left: 216px;
   margin-top: 24px;
 }
@@ -254,13 +255,11 @@ header {
 }
 
 #cv h2 {
-  color: #333;
-  font-weight: normal;
   margin-top: 9px;
 }
 
-#download-cv {
-  margin-top: 60px;
+#download-cv h2 {
+  margin-bottom: 3px;
 }
 
 #contact-email {
@@ -342,6 +341,15 @@ p {
 
 #sidebar .photo-nav div {
   margin-bottom: 6px;
+}
+
+#sidebar .photo-nav .photo-nav-nextprev {
+  margin-bottom: 8px;
+}
+
+h2 {
+  font-weight: normal;
+  color: #333;
 }
 
 a {

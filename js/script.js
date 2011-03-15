@@ -147,8 +147,9 @@ $(function() {
     if (inPhotos) {
       content += 
         '<div class="photo-nav" style="display:none">' +
-          '<div><a class="photo-nav-prev">&lt;</a> <a class="photo-nav-next">&gt;</a></div>' +
+          '<div class="photo-nav-nextprev"><a class="photo-nav-prev">&lt;</a> <a class="photo-nav-next">&gt;</a></div>' +
           '<div><a class="photo-nav-next-gal">next gallery</a></div>' +
+          '<div><a class="photo-nav-back-to-gal" href="#' + pageInfoPath[0].id + '">back to ' + getPageTitle(pageInfoPath[0]) + '</a></div>' +
         '</div>';
     }
     
@@ -290,7 +291,7 @@ $(function() {
       // set timeout required to get width and height. not immediately available. we have
       // to wait until the image has been placed in the page.
       setTimeout(function() {
-        $(".photo-nav").css("top", photo.height() - 28).show();
+        $(".photo-nav").css("top", photo.height() - 48).show();
       }, 0);
     });
     

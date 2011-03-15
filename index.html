@@ -14,7 +14,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
   <link rel="shortcut icon" href="/favicon.ico">
-  <link rel="stylesheet" href="css/style.css?v=10">
+  <link rel="stylesheet" href="css/style.css?v=12">
  
   <script src="js/libs/modernizr-1.6.min.js"></script>
 </head>
@@ -107,11 +107,6 @@
           <h2>group publications</h2>
           <div>Portfolio 9: Modern Movements in Photgraphy. Photobooks Canada:</div>
           <div>Toronto, 2007</div>
-        </div>
-        
-        <div id="download-cv">
-          <h2>download cv</h2>
-          <a href="downloads/cv.pdf">pdf</a>
         </div>
       </section>
       
@@ -397,7 +392,9 @@
       },
       
       cv: {
-        navLink: 'nav-cv'
+        navLink: 'nav-cv',
+        sidebar: 'html',
+        sidebarHtml: '<div id="download-cv"><h2>download cv</h2><a href="downloads/cv.pdf">pdf</a></div>'
       },
       
       contact: {
@@ -414,7 +411,7 @@
   <!-- scripts concatenated and minified via ant build script-->
   <script src="js/mylibs/underscore-1.1.4.js"></script>
   <script src="js/plugins.js"></script>
-  <script src="js/script.js?v=6"></script>
+  <script src="js/script.js?v=7"></script>
   <!-- end concatenated and minified scripts-->
   
   <!--[if lt IE 7 ]>

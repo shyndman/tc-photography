@@ -7,6 +7,9 @@ $(function() {
   var pageTitle = $("#page-title");
   var topNavLinks = $("#top-nav-links");
   
+  /**
+   * Begins the show menu animation.
+   */
   var showMenu = function() { 
     completeMenuAnimation();
     pageTitle.fadeTo(100, 0);
@@ -14,6 +17,9 @@ $(function() {
     topNavLinks.delay(100).fadeIn(300);
   };
   
+  /**
+   * Begins the hide menu animation.
+   */
   var hideMenu = function() {
     completeMenuAnimation();
     topNavLinks.fadeOut(200);    
@@ -21,7 +27,9 @@ $(function() {
     pageTitle.delay(300).fadeTo(100, 1);
   };
   
-  /** This prevents wrapping on the nav links */
+  /** 
+   * This prevents wrapping on the nav links by early completing animation.
+   */
   var completeMenuAnimation = function() {
     pageTitle.stop(true, true);
     topNavLinks.stop(true, true);
@@ -31,9 +39,15 @@ $(function() {
   $("#top-nav").hover(showMenu, hideMenu);
   
   // navigation
-  var currentGalleryInfo = null;
+  var curGalleryInfo = null;
   var inPhotos = false;
   var curPageInfoPath = null;
+  
+  /**
+   * Performs faux navigation to the supplied path.
+   *
+   * This method is a bit long and gross. Refactor target.
+   */
   var selectPage = function(pagePath) {
     log("navigating, page=" + pagePath)
     
@@ -59,7 +73,7 @@ $(function() {
       else if (pageInfo["galleries"]) pageInfo = pageInfo.galleries[part];
       else if (pageInfo["photos"]) {
         inPhotos = true;
-        currentGalleryInfo = getGalleryInfo(pageInfo, part);
+        curGalleryInfo = getGalleryInfo(pageInfo, part);
         pageInfo = pageInfo.photos[part];
       }
 
@@ -96,12 +110,16 @@ $(function() {
     curPageInfoPath = pageInfoPath;
   };
   
-  /** Returns an object representing the current gallery and position */
+  /** 
+   * Returns an object representing the current gallery and position 
+   */
   var getGalleryInfo = function(galleryInfo, curPhotoName) {
-    return { gallery: galleryInfo, currentPhoto: curPhotoName };
+    return { gallery: galleryInfo, curPhoto: curPhotoName };
   };
   
-  /** Prepares and shows the sidebar for the supplied pageInfo */
+  /** 
+   * Prepares and shows the sidebar for the supplied pageInfo 
+   */
   var preparePageSidebar = function(pageInfo, pagePath, pageInfoPath) {
     var sidebar = $("#sidebar");
     
@@ -126,7 +144,18 @@ $(function() {
       break;
     }
     
+    if (inPhotos) {
+      content += 
+        '<div class="photo-nav" style="display:none">' +
+          '<div><a class="photo-nav-prev">&lt;</a> <a class="photo-nav-next">&gt;</a></div>' +
+          '<div><a class="photo-nav-next-gal">next gallery</a></div>' +
+        '</div>';
+    }
+    
     sidebar.find(".content").empty().append(content);
+    sidebar.find(".photo-nav-prev").click(showPreviousPhoto);
+    sidebar.find(".photo-nav-next").click(showNextPhoto);
+    sidebar.find(".photo-nav-next-gal").click(showNextGallery);
     
     // show the sidebar
     sidebar.removeClass("hidden");
@@ -142,7 +171,9 @@ $(function() {
         : pageInfo.title;
   };
   
-  /** Gets the nav node for the pageInfo's children */
+  /** 
+   * Gets the nav node for the pageInfo's children 
+   */
   var getGalleriesNav = function(pageInfo, pagePath) {
     var navParent = $("<nav>");
     var first = true;
@@ -189,7 +220,9 @@ $(function() {
     return navParent;
   };
   
-  /** Gets the gallery master content */
+  /** 
+   * Gets jQuery wrapped gallery master content
+   */
   var getGalleryContent = function(pageInfo, pagePath) {
     var thumbContainer = $("<div>", {
       "class": "gallery"
@@ -216,12 +249,16 @@ $(function() {
     return thumbContainer;
   };
   
-  /** Handles the mouseover event on a child navigation element */
+  /** 
+   * Handles the mouseover event on a child navigation element 
+   */
   var onChildNavOver = function(pageInfo, parentInfo, evt) {
     $("#" + parentInfo.id).empty().append(pageInfo.hoverImg);
   };
   
-  /** Prepares the children for display. This may preload images. */
+  /** 
+   * Prepares the children for display. This may preload images. 
+   */
   var prepareGalleries = function(pageInfo) {
     for (var childId in pageInfo.galleries) {
       var childPageInfo = pageInfo.galleries[childId];
@@ -240,14 +277,29 @@ $(function() {
     }
   };
   
+  /** 
+   * Gets jQuery wrapped DOM elements for a photo page.
+   */
   var getPhotoContent = function(pageInfo, pagePath) {
-    return $("<img>", {
+    var photo = $("<img>", {
       src: pageInfo.fullSrc,
       "class": "gallery-full"
     });
+    
+    photo.load(function() {
+      // set timeout required to get width and height. not immediately available. we have
+      // to wait until the image has been placed in the page.
+      setTimeout(function() {
+        $(".photo-nav").css("top", photo.height() - 28).show();
+      }, 0);
+    });
+    
+    return photo;
   };
   
-  /** Performs all necessary visual cleanup page to remove traces of the previously shown page */
+  /** 
+   * Performs all necessary visual cleanup page to remove traces of the previously shown page 
+   */
   var hidePrevPage = function() {
     if (!curPageInfoPath) return;
     
@@ -261,58 +313,105 @@ $(function() {
     }
   };
   
-  // history management
+  // initialize history management
   $.history.init(function(hash) {
     selectPage(hash == "" ? "intro" : hash);
   }, { unescape: ",/" });
 
-  /** Shows the next photo */
-  var showNextPhoto = function() {
+  /** 
+   * Shows the next photo. 
+   *
+   * This is a function statement so it is available immediately in this scope. 
+   */
+  function showNextPhoto() {
     var path = _.pluck(curPageInfoPath.slice(0, curPageInfoPath.length - 1), "id").join("/");
     path += "/" + getNextPhotoId();
     
     window.location.hash = path;
   };
   
-  /** Shows the previous photo */
-  var showPreviousPhoto = function() {
+  /** 
+   * Shows the previous photo.
+   *
+   * This is a function statement so it is available immediately in this scope. 
+   */
+  function showPreviousPhoto() {
     var path = _.pluck(curPageInfoPath.slice(0, curPageInfoPath.length - 1), "id").join("/");
     path += "/" + getPreviousPhotoId();   
     
     window.location.hash = path;
   };
-
-  /** Gets the identifier of the previous photo in the current gallery */
-  var getPreviousPhotoId = function() {
-    var curPhotoId = curPageInfoPath[curPageInfoPath.length - 1].id;
-    var lastPhotoId;
-    for (var photoId in currentGalleryInfo.gallery.photos) {
-      if (curPhotoId == photoId && lastPhotoId != undefined)
-        return lastPhotoId;
+  
+  /**
+   * Shows the next gallery.
+   *
+   * This is a function statement so it is available immediately in this scope. 
+   */
+  function showNextGallery() {
+    if (!inPhotos) 
+      return;
       
-      lastPhotoId = photoId;
+    var nextKey = getNextHashKey(
+      curPageInfoPath[0].galleries, 
+      curGalleryInfo.gallery.id,
+      function(key, val) {
+        return val.photos !== undefined;
+      });
+    location.hash = curPageInfoPath[0].id + "/" + nextKey;
+  };
+
+  /** 
+   * Gets the key before curKey, as found in hash 
+   */
+  var getPreviousHashKey = function(hash, curKey) {
+    var lastKey;
+    for (var key in hash) {
+      if (curKey == key && lastKey != undefined)
+        return lastKey;
+      
+      lastKey = key;
     }
     
-    return lastPhotoId;
+    return lastKey;
+  };
+  
+  /** 
+   * Gets the key after curKey, as found in hash 
+   */
+  var getNextHashKey = function(hash, curKey, cond) {
+    var firstKey;
+    var returnNext = false;
+    cond = cond || function(key, val) {
+      return true;
+    };
+    
+    for (var key in hash) {
+      if (returnNext && cond(key, hash[key]))
+        return key;
+      
+      if (key == curKey) 
+        returnNext = true;
+      if (firstKey == undefined)
+        firstKey = key;
+    }
+    
+    return firstKey;
+  };
+
+  /** 
+   * Gets the identifier of the previous photo in the current gallery 
+   *
+   * This is a function statement so it is available higher up
+   */
+  var getPreviousPhotoId = function() {
+    return getPreviousHashKey(curGalleryInfo.gallery.photos, 
+      curPageInfoPath[curPageInfoPath.length - 1].id);
   };
   
   /** Gets the identifier of the next photo in the current gallery */
   var getNextPhotoId = function() {
-    var curPhotoId = curPageInfoPath[curPageInfoPath.length - 1].id;
-    var firstPhotoId;
-    var returnNext = false;
-    
-    for (var photoId in currentGalleryInfo.gallery.photos) {
-      if (returnNext)
-        return photoId;
-      
-      if (photoId == curPhotoId) 
-        returnNext = true;
-      if (firstPhotoId == undefined)
-        firstPhotoId = photoId;
-    }
-    
-    return firstPhotoId;
+    return getNextHashKey(curGalleryInfo.gallery.photos, 
+      curPageInfoPath[curPageInfoPath.length - 1].id);
   };
 
   // keyboard navigation

@@ -168,15 +168,15 @@ button {  width: auto; overflow: visible; }
 
 /* Expand to fill vertically */
 html, body {
-	font-size: 9px;
+	font-size: 10px;
 	font-family: "Lucida Sans Unicode", "Lucida Grande", "sans-serif";
-	color: #949494;
+	color: #333;
 	height: 100%;
 }
 
 #container {
 	width: 960px;
-	margin: 0 auto;
+	margin: auto;
 	border: solid transparent 1px;
 }
 
@@ -196,7 +196,7 @@ header {
 
 #top-nav {
   font-size: 10px;
-	color: #C5C5C5;
+	color: #9B9B9B;
 	letter-spacing: 6px;
 	height: 12px;
 	margin: 24px 0 0 0;
@@ -207,8 +207,8 @@ header {
 #menu-label {
 	font-size: 10px;
 	letter-spacing: 10px;
-  text-transform: uppercase;
 	margin-left: 20px;
+	width: 250px;
 }
 
 #top-nav a.first {
@@ -230,9 +230,11 @@ header {
 }
 
 #bio {
-  text-align: right;
+  text-align: justify;
   width: 504px;
+	color: #9B9B9B;
   margin-left: 216px;
+  margin-top: 24px;
 }
 
 #bio-pic {
@@ -245,13 +247,16 @@ header {
 
 #cv {
   width: 504px;
+  line-height: 14px;
   margin-left: 216px;
-  text-align: right;
+	color: #9B9B9B;
+  text-align: left;
 }
 
 #cv h2 {
+  color: #333;
   font-weight: normal;
-  text-transform: uppercase;
+  margin-top: 9px;
 }
 
 #download-cv {
@@ -290,10 +295,13 @@ header {
 #page-title {
   margin-top: 44px;
 	font-size: 10px;
+	letter-spacing: 4px;
 }
 
 #sidebar .content {
 	margin-top: 46px;
+	position: relative;
+	color: #9B9B9B;
 }
 
 p {
@@ -310,26 +318,39 @@ p {
 }
 
 #sidebar nav a.grouped {
-  margin-left: 6px;
+  margin-left: 12px;
 }
 
 #sidebar nav h4 {
-  color: #C5C5C5;
+  color: #9B9B9B;
 	padding: 6px 0;
 	font-weight: normal;
 }
 
 #sidebar nav a.commercial-link {
-  margin-top: 380px;
+  margin-top: 398px;
+}
+
+#sidebar .photo-nav {
+  position: absolute;
+  top: 280px;
+}
+
+#sidebar .photo-nav a {
+  margin-right: 20px;
+}
+
+#sidebar .photo-nav div {
+  margin-bottom: 6px;
 }
 
 a {
-	color: #C5C5C5;
+	color: #9B9B9B;
 	text-decoration: none;
 }
 
 a:visited {
-	color: #C5C5C5;
+	color: #9B9B9B;
 }
 
 a:hover {

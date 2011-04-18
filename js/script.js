@@ -145,10 +145,11 @@ $(function() {
     }
     
     if (inPhotos) {
+      // gah...templates would be way nicer
       content += 
         '<div class="photo-nav" style="display:none">' +
-          '<div class="photo-nav-nextprev"><a class="photo-nav-prev">&lt;</a> <a class="photo-nav-next">&gt;</a></div>' +
-          '<div><a class="photo-nav-next-gal">next gallery</a></div>' +
+          '<div class="photo-nav-nextprev"><a class="photo-nav-prev" href="#">&lt;</a> <a class="photo-nav-next" href="#">&gt;</a></div>' +
+          '<div><a class="photo-nav-next-gal" href="#">next gallery</a></div>' +
           '<div><a class="photo-nav-back-to-gal" href="#' + pageInfoPath[0].id + '">back to ' + getPageTitle(pageInfoPath[0]) + '</a></div>' +
         '</div>';
     }
@@ -329,6 +330,8 @@ $(function() {
     path += "/" + getNextPhotoId();
     
     window.location.hash = path;
+    
+    return false;
   };
   
   /** 
@@ -341,6 +344,8 @@ $(function() {
     path += "/" + getPreviousPhotoId();   
     
     window.location.hash = path;
+    
+    return false;
   };
   
   /**
@@ -359,6 +364,8 @@ $(function() {
         return val.photos !== undefined;
       });
     location.hash = curPageInfoPath[0].id + "/" + nextKey;
+    
+    return false;
   };
 
   /** 

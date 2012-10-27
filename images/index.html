@@ -1,0 +1,485 @@
+<!doctype html>  
+<!--[if lt IE 7 ]><html class="no-js ie6"><![endif]-->
+<!--[if IE 7 ]><html class="no-js ie7"><![endif]-->
+<!--[if IE 8 ]><html class="no-js ie8"><![endif]-->
+<!--[if (gte IE 9)|!(IE)]><!--><html class="no-js"> <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+
+  <title>Tatiana Chumakova Photography</title>
+
+  <meta name="description" content="Tatiana Chumakova is a Russian-born photographer currently based in Toronto. This is her online portfolio of art and commercial projects.">
+  <meta name="author" content="Scott Hyndman">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <link rel="shortcut icon" href="/favicon.ico">
+  <link rel="stylesheet" href="css/style.css?v=12">
+ 
+  <script src="js/libs/modernizr-1.6.min.js"></script>
+</head>
+
+<body lang="en" >
+  <div id="container">
+    
+    <div id="sidebar" class="hidden">
+      <div id="page-title"></div>
+      <div class="content"></div>
+    </div>
+    
+    <header>
+      <h1><a id="logo-link" href="#" class="ir">Tatiana Chumakova Photography</a></h1>
+      <nav id="top-nav">
+        <div id="menu-label">
+          menu
+        </div>
+        <div id="top-nav-links" style="display:none">
+          <a href="#photos" id="nav-photos" class="first">photos</a>
+          <a href="#bio" id="nav-bio">bio</a>
+          <a href="#cv" id="nav-cv">cv</a>
+          <a href="#contact" id="nav-contact">contact</a>
+        </div>
+      </nav>
+    </header>
+
+    <div id="main" role="main">
+      <section id="intro" class="hidden">
+        <a href="#photos">
+          <img src="images/index_invitation.jpg" alt="Invitation to Art Photo Show - Mounds. Opening May 5th, 2011" class="intro centered">
+        </a> 
+      </section>
+      
+      <section id="photos" class="hidden">
+      </section>
+      <section id="commercial" class="hidden">
+      </section>
+      
+      <section id="bio" class="hidden">
+        <p>Tatiana is a Russian-born photographer based in Toronto. She graduated from Ryerson University with a Bachelor of Fine Arts in Photography.</p>
+        <p>Her artwork explores social trends – often through landscape photography. She is interested in human relationship to nature. Her work examines the way people inhabit land and the way they alter it. The North-American phenomenon of suburbia is one of the subject matters Tatiana has explored; a theme particularly personal, because she spent her teenage years among the orderly rows of houses. Farming – another subject matter – is one of the oldest and most basic ways people relate to and depend upon nature. Tatiana finds the landscape and gesture of farming wholesome and beautiful.</p>
+        <p>In her photographic work, Tatiana hopes to explore larger issues that impact nature and society through local manifestations.  Her aim is to create images that foster thought and questions. Equally important for her is to create works of esthetic interest, offering the viewer a space of beautiful light, shape and colour to contemplate the underlying topics.</p>
+      </section>
+      
+      <section id="cv" class="hidden">
+        <div>
+          <h2>bio</h2>
+          <div>Born: January 17th, 1984</div>
+          <div>Based: Toronto, Canada</div>
+        </div>
+
+        <div>
+          <h2>education</h2>
+          <div>2004 – 2008. Ryerson University. Toronto, ON</div>
+          <div>Image Arts: Photography, complemented with courses in Art History and Politics</div>
+          <div>Thesis Advisors in 4th year of study: Edward Burtynsky and Geoffrey James</div>
+          
+          <div>2006 - 2007. Concordia University. Montreal, QC</div>
+          <div>Exchange Year</div>
+          <div>Major in Photography with supplementary courses in Painting, Contemporary Art History and Interdisciplinary Studies</div>
+                    
+          <div>2003 - 2004. &Eacute;cole Sup&eacute;rieure Des Arts Appliqu&eacute;s: Duperr&eacute;. Paris, France</div>
+          <div>Mise &agrave; Niveau</div>
+          <div>Studies in Visual Communcation and Textile</div>
+        </div>
+          
+        <div>
+          <h2>solo exhibitions</h2>
+          <div>February 12 - 16, 2007 : Expanses of Concrete</div>
+          <div>Ryerson Image Arts Gallery. 122 Bond Street, 3rd Floor. Toronto, ON</div>
+        </div>
+          
+        <div>
+          <h2>group exhibitions</h2>
+          <div>March 7 - April 2, 2007 : Envisioning The City</div>
+          <div>O Patro Vys, 356 Avenue du Mont-Royale Est. Montreal, QC</div>
+          
+          <div>February 1 - 8, 2007 : Study In The City</div>
+          <div>Private Space, 1182 Crescent Street, 2nd Floor. Montreal, QC</div>
+          
+          <div>April 2006 : Maximum Exposure</div>
+          <div>Ryerson Image Arts Building, 122 Bond Street, 3rd Floor. Toronto, ON</div>
+          
+          <div>April 2006 : Maximum Exposure</div>
+          <div>Ryerson Image Arts Building, 122 Bond Street, 3rd Floor. Toronto, ON</div>
+        </div>
+        
+        <div>
+          <h2>group publications</h2>
+          <div>Portfolio 9: Modern Movements in Photgraphy. Photobooks Canada:</div>
+          <div>Toronto, 2007</div>
+        </div>
+      </section>
+      
+      <section id="contact" class="hidden">
+        <!-- sidebar is in site content JSON -->
+      </section>
+      
+      <section id="four-oh-four">  
+      </section>
+      <div class="clearfix"></div>
+    </div>
+  </div>
+
+  <!-- Site content -->
+  <script>
+    tcp = {}; // package to avoid window pollution
+    tcp.siteContent = {
+      intro: {},
+      
+      photos: {
+        title: 'photo projects',
+        sidebar: 'galleries',
+        navLink: 'nav-photos',
+        defaultHtml: '<a href="#photos/mounds - fall"><img src="images/mounds/fall/01_financial_drive_brampton.jpg" alt="Mounds cover image" class="gallery-full"></a>',
+        
+        galleries: {
+          fermes: {
+            hoverImgSrc: 'images/fermes/silvia.jpg',
+            sidebar: 'html',
+            sidebarHtml: "<p>Fermes description.</p>",
+            
+            photos: {
+              field: {
+                fullSrc: 'images/fermes/field.jpg',
+                thumbSrc: 'images/fermes/field.thumb.jpg',
+                title: '$use_parent',
+                sidebar: 'html',
+                sidebarHtml: 'Les champes.<br>Fermes du Lamalou. Montpellier, France. 2008'
+              },
+              grand_tomates: {
+                fullSrc: 'images/fermes/grand_tomates.jpg',
+                thumbSrc: 'images/fermes/grand_tomates.thumb.jpg',
+                title: '$use_parent',
+                sidebar: 'html',
+                sidebarHtml: 'Grand Max. Serre de tomates.<br>Ferme des Quatre Saison. Agen, France. 2008'
+              },
+              manon2: {
+                fullSrc: 'images/fermes/manon2.jpg',
+                thumbSrc: 'images/fermes/manon2.thumb.jpg',
+                title: '$use_parent',
+                sidebar: 'html',
+                sidebarHtml: 'Manon. S&eacute;chage d\'oignons.<br>Ferme des Quatre Saisons. Agen, France. 2008'
+              },
+              petit_tournesols: {
+                fullSrc: 'images/fermes/petit_tournesols.jpg',
+                thumbSrc: 'images/fermes/petit_tournesols.thumb.jpg',
+                title: '$use_parent',
+                sidebar: 'html',
+                sidebarHtml: 'Petit Max. Tournesolsm.<br>Ferme des Quatre Saisons. Agen, France. 2008'
+              },
+              silvia: {
+                fullSrc: 'images/fermes/silvia.jpg',
+                thumbSrc: 'images/fermes/silvia.thumb.jpg',
+                title: '$use_parent',
+                sidebar: 'html',
+                sidebarHtml: 'Silvia. Montagne Pic Saint-Loup.<br>Fermes du Lamalou. Montpellier, France. 2008'
+              }
+            }
+          },
+          
+          "mounds - fall": {
+            hoverImgSrc: 'images/mounds/fall/01_financial_drive_brampton.jpg',
+            sidebar: 'html',
+            sidebarHtml: "<p>The focus of this project is to document human manipulation of land.</p>" +
+            "<p>Since the beginning of civilization, people strove to tame and control nature. By shaping environments according to their whim, people proclaim dominion over the Earth. I am greatly interested in the forces that necessitate the alteration of land and the bizarre landscapes that result.</p>" +
+            "<p>The images in this series depict mounds of topsoil at suburban sites. They are created through the process of topsoil removal in preparation for building new homes.</p>" +
+            "<p>The piles represent an inexcusable mismanagement of resources. Two thirds of Canada's Grade A soil can be seen from the CN Tower. These images are taken just north of Toronto, where rapid construction continues to pave over farmland.</p>" +
+            "<p>These mounds of topsoil denote a giant cleft between humanity and nature. For thousands of years, soil has been treasured for its potential to feed generations. Only a century ago, the process of topsoil removal would represent a greater calamity than any natural disaster. Today, no one notices how the soil is scrapped of and trucked away. The disregard for topsoil shows that it has been totally devalued.</p>" +
+            "<p>By giving piles of soil prominent positions within the frames, the project asks the viewers to consider the phenomenon of man's alteration of land and the value of soil.</p>",
+            
+            photos: {
+              "01_financial_drive_brampton": {
+                fullSrc: 'images/mounds/fall/01_financial_drive_brampton.jpg',
+                thumbSrc: 'images/mounds/fall/01_financial_drive_brampton.thumb.jpg',
+                title: '$use_parent',
+                sidebar: 'html',
+                sidebarHtml: 'Financial Drive<br>Brampton, Ontario. 2007'
+              },
+              "02_financial_drive_brampton": {
+                fullSrc: 'images/mounds/fall/02_financial_drive_brampton.jpg',
+                thumbSrc: 'images/mounds/fall/02_financial_drive_brampton.thumb.jpg',
+                title: '$use_parent',
+                sidebar: 'html',
+                sidebarHtml: 'Financial Drive<br>Brampton, Ontario. 2007'
+              },
+              "03_financial_drive_brampton": {
+                fullSrc: 'images/mounds/fall/03_financial_drive_brampton.jpg',
+                thumbSrc: 'images/mounds/fall/03_financial_drive_brampton.thumb.jpg',
+                title: '$use_parent',
+                sidebar: 'html',
+                sidebarHtml: 'Financial Drive<br>Brampton, Ontario. 2007'
+              },
+              "04_rutherford_road": {
+                fullSrc: 'images/mounds/fall/04_rutherford_road.jpg',
+                thumbSrc: 'images/mounds/fall/04_rutherford_road.thumb.jpg',
+                title: '$use_parent',
+                sidebar: 'html',
+                sidebarHtml: 'Rutherford Road<br>Richmond Hill, Ontario. 2007'
+              },
+              "05_financial_drive_brampton": {
+                fullSrc: 'images/mounds/fall/05_financial_drive_brampton.jpg',
+                thumbSrc: 'images/mounds/fall/05_financial_drive_brampton.thumb.jpg',
+                title: '$use_parent',
+                sidebar: 'html',
+                sidebarHtml: 'Financial Drive<br>Brampton, Ontario. 2007'
+              },
+              "06_financial_drive_brampton": {
+                fullSrc: 'images/mounds/fall/06_financial_drive_brampton.jpg',
+                thumbSrc: 'images/mounds/fall/06_financial_drive_brampton.thumb.jpg',
+                title: '$use_parent',
+                sidebar: 'html',
+                sidebarHtml: 'Financial Drive<br>Brampton, Ontario. 2007'
+              },
+              "07_financial_drive_brampton": {
+                fullSrc: 'images/mounds/fall/07_financial_drive_brampton.jpg',
+                thumbSrc: 'images/mounds/fall/07_financial_drive_brampton.thumb.jpg',
+                title: '$use_parent',
+                sidebar: 'html',
+                sidebarHtml: 'Financial Drive<br>Brampton, Ontario. 2007'
+              },
+              "08_vogell_road_richmondhill": {
+                fullSrc: 'images/mounds/fall/08_vogell_road_richmondhill.jpg',
+                thumbSrc: 'images/mounds/fall/08_vogell_road_richmondhill.thumb.jpg',
+                title: '$use_parent',
+                sidebar: 'html',
+                sidebarHtml: 'Vogell Road<br>Richmond Hill, Ontario. 2007'
+              },
+              "09_vogell_road_richmondhill": {
+                fullSrc: 'images/mounds/fall/09_vogell_road_richmondhill.jpg',
+                thumbSrc: 'images/mounds/fall/09_vogell_road_richmondhill.thumb.jpg',
+                title: '$use_parent',
+                sidebar: 'html',
+                sidebarHtml: 'Vogell Road<br>Richmond Hill, Ontario. 2007'
+              },  
+              "10_financial_drive_brampton": {
+                fullSrc: 'images/mounds/fall/10_financial_drive_brampton.jpg',
+                thumbSrc: 'images/mounds/fall/10_financial_drive_brampton.thumb.jpg',
+                title: '$use_parent',
+                sidebar: 'html',
+                sidebarHtml: 'Financial Drive<br>Brampton, Ontario. 2007'
+              },
+              "11_rutherford_road": {
+                fullSrc: 'images/mounds/fall/11_rutherford_road.jpg',
+                thumbSrc: 'images/mounds/fall/11_rutherford_road.thumb.jpg',
+                title: '$use_parent',
+                sidebar: 'html',
+                sidebarHtml: 'Rutherford Road<br>Richmond Hill, Ontario. 2007'
+              },
+              "12_financial_drive_brampton": {
+                fullSrc: 'images/mounds/fall/12_financial_drive_brampton.jpg',
+                thumbSrc: 'images/mounds/fall/12_financial_drive_brampton.thumb.jpg',
+                title: '$use_parent',
+                sidebar: 'html',
+                sidebarHtml: 'Financial Drive<br>Brampton, Ontario. 2007'
+              }
+            }
+          },
+          
+          "mounds - winter": {
+            hoverImgSrc: 'images/mounds/winter/mounds.winter.cover.jpg',
+            sidebar: 'html',
+            sidebarHtml: "<p>The focus of this project is to document human manipulation of land.</p>" +
+            "<p>Since the beginning of civilization, people strove to tame and control nature. By shaping environments according to their whim, people proclaim dominion over the Earth. I am greatly interested in the forces that necessitate the alteration of land and the bizarre landscapes that result.</p>" +
+            "<p>The images in this series depict mounds of topsoil at suburban sites. They are created through the process of topsoil removal in preparation for building new homes.</p>" +
+            "<p>The piles represent an inexcusable mismanagement of resources. Two thirds of Canada's Grade A soil can be seen from the CN Tower. These images are taken just north of Toronto, where rapid construction continues to pave over farmland.</p>" +
+            "<p>These mounds of topsoil denote a giant cleft between humanity and nature. For thousands of years, soil has been treasured for its potential to feed generations. Only a century ago, the process of topsoil removal would represent a greater calamity than any natural disaster. Today, no one notices how the soil is scrapped of and trucked away. The disregard for topsoil shows that it has been totally devalued.</p>" +
+            "<p>By giving piles of soil prominent positions within the frames, the project asks the viewers to consider the phenomenon of man's alteration of land and the value of soil.</p>",
+            
+            photos: {
+              "01_vogell_road_richmond_hill": {
+                fullSrc: 'images/mounds/winter/01_vogell_road_richmond_hill.jpg',
+                thumbSrc: 'images/mounds/winter/01_vogell_road_richmond_hill.thumb.jpg',
+                title: '$use_parent',
+                sidebar: 'html',
+                sidebarHtml: 'Vogell Rd, Richmond Hill. 2008'
+              },
+              "02_vogell_road_richmond_hill": {
+                fullSrc: 'images/mounds/winter/02_vogell_road_richmond_hill.jpg',
+                thumbSrc: 'images/mounds/winter/02_vogell_road_richmond_hill.thumb.jpg',
+                title: '$use_parent',
+                sidebar: 'html',
+                sidebarHtml: 'Vogell Rd, Richmond Hill. 2008'
+              },
+              "03_vogell_road_richmond_hill": {
+                fullSrc: 'images/mounds/winter/03_vogell_road_richmond_hill.jpg',
+                thumbSrc: 'images/mounds/winter/03_vogell_road_richmond_hill.thumb.jpg',
+                title: '$use_parent',
+                sidebar: 'html',
+                sidebarHtml: 'Vogell Rd, Richmond Hill. 2008'
+              },
+              "04_vogell_road_richmond_hill": {
+                fullSrc: 'images/mounds/winter/04_vogell_road_richmond_hill.jpg',
+                thumbSrc: 'images/mounds/winter/04_vogell_road_richmond_hill.thumb.jpg',
+                title: '$use_parent',
+                sidebar: 'html',
+                sidebarHtml: 'Vogell Rd, Richmond Hill. 2008'
+              },
+              "05_vogell_road_richmond_hill": {
+                fullSrc: 'images/mounds/winter/05_vogell_road_richmond_hill.jpg',
+                thumbSrc: 'images/mounds/winter/05_vogell_road_richmond_hill.thumb.jpg',
+                title: '$use_parent',
+                sidebar: 'html',
+                sidebarHtml: 'Vogell Rd, Richmond Hill. 2008'
+              },
+              "06_16th_ave_richmond_hill": {
+                fullSrc: 'images/mounds/winter/06_16th_ave_richmond_hill.jpg',
+                thumbSrc: 'images/mounds/winter/06_16th_ave_richmond_hill.thumb.jpg',
+                title: '$use_parent',
+                sidebar: 'html',
+                sidebarHtml: '16th Ave., Richmond Hill. 2008'
+              },
+              "07_side_road_17_pefferlaw": {
+                fullSrc: 'images/mounds/winter/07_side_road_17_pefferlaw.jpg',
+                thumbSrc: 'images/mounds/winter/07_side_road_17_pefferlaw.thumb.jpg',
+                title: '$use_parent',
+                sidebar: 'html',
+                sidebarHtml: 'Sideroad 17, Pefferlaw. 2008'
+              }
+            }
+          },
+          
+          untitled: {
+            hoverImgSrc: 'images/untitled/01_untitled.jpg',
+            sidebar: 'html',
+            sidebarHtml: "<p>These images depict nude people inhabiting altered landscapes. There is a stark contrast between the vulnerability of the naked body and the rough industrial landscape. Although the landscapes are man-made, some forms appear natural, like mountainous hills or soft-rolling dunes. The light of the sun is warm and tender.</p>" +
+            "<p>The aim of the work is to contemplate the type of environments industry creates – environments that people themselves cannot comfortably inhabit.</p>",
+            
+            photos: {
+              "01_untitled": {
+                fullSrc: 'images/untitled/01_untitled.jpg',
+                thumbSrc: 'images/untitled/01_untitled.thumb.jpg',
+                title: '$use_parent',
+                sidebar: 'html',
+                sidebarHtml: 'Sandy - &agrave; Construction Landfill<br>Leslie Spit. Toronto: 2007'
+              },
+              "02_untitled": {
+                fullSrc: 'images/untitled/02_untitled.jpg',
+                thumbSrc: 'images/untitled/02_untitled.thumb.jpg',
+                title: '$use_parent',
+                sidebar: 'html',
+                sidebarHtml: 'Tova - &agrave; Road Salt<br>Commissioners Street industrial area. Toronto 2007'
+              }
+            }
+          },
+          
+          "commercial work": {
+            navCssClass: "commercial-link",
+            href: "#commercial"
+          }
+        }
+      },
+      
+      "commercial": {
+        title: "commercial work",
+        sidebar: 'galleries',
+        defaultHtml: '<a href="#commercial/food/"><img src="images/food/food.cover.jpg" alt="Food cover image" class="gallery-full"></a>',
+        galleries: {
+          food: {
+            hoverImgSrc: 'images/food/food.cover.jpg',
+            navCssClass: 'first-commercial',
+            sidebar: 'html',
+            sidebarHtml: "&nbsp;",
+            photos: {
+              "pomegranate_clementines": {
+                fullSrc: 'images/food/pomegranate_clementines.jpg',
+                thumbSrc: 'images/food/pomegranate_clementines.thumb.jpg',
+                title: '$use_parent',
+                sidebar: 'html',
+                sidebarHtml: '&nbsp;'
+              },
+              "pomegranate": {
+                fullSrc: 'images/food/pomegranate.jpg',
+                thumbSrc: 'images/food/pomegranate.thumb.jpg',
+                title: '$use_parent',
+                sidebar: 'html',
+                sidebarHtml: '&nbsp;'
+              },
+              "salad": {
+                fullSrc: 'images/food/salad.jpg',
+                thumbSrc: 'images/food/salad.thumb.jpg',
+                title: '$use_parent',
+                sidebar: 'html',
+                sidebarHtml: '&nbsp;'
+              },
+              "cheese": {
+                fullSrc: 'images/food/cheese.jpg',
+                thumbSrc: 'images/food/cheese.thumb.jpg',
+                title: '$use_parent',
+                sidebar: 'html',
+                sidebarHtml: '&nbsp;'
+              },
+              "sandwich": {
+                fullSrc: 'images/food/sandwich.jpg',
+                thumbSrc: 'images/food/sandwich.thumb.jpg',
+                title: '$use_parent',
+                sidebar: 'html',
+                sidebarHtml: '&nbsp;'
+              },
+              "wakamama": {
+                fullSrc: 'images/food/wakamama.jpg',
+                thumbSrc: 'images/food/wakamama.thumb.jpg',
+                title: '$use_parent',
+                sidebar: 'html',
+                sidebarHtml: '&nbsp;'
+              }
+            }
+          },
+          commercial: {
+            hoverImgSrc: 'images/commercial/commercial.cover.jpg',
+            sidebar: 'html',
+            sidebarHtml: "&nbsp;",
+            photos: {
+              "sneakers": {
+                fullSrc: 'images/commercial/sneakers.jpg',
+                thumbSrc: 'images/commercial/sneakers.thumb.jpg',
+                title: '$use_parent',
+                sidebar: 'html',
+                sidebarHtml: '&nbsp;'
+              }
+            }
+          }
+        }
+      },
+      
+      bio: {
+        navLink: 'nav-bio',
+        sidebar: 'html',
+        sidebarHtml: '<div><img src="images/bio.jpg" alt="Picture of Tanya" id="bio-pic"></div><p class="credits">photo by: Nico Oved</p>'
+      },
+      
+      cv: {
+        navLink: 'nav-cv',
+        sidebar: 'html',
+        sidebarHtml: '<div id="download-cv"><h2>download cv</h2><a href="downloads/cv.pdf">pdf</a></div>'
+      },
+      
+      contact: {
+        navLink: 'nav-contact',
+        sidebar: 'html',
+        sidebarHtml: '<div id="contact-email"><a href="mailto:info@tatianachumakova.com">info@tatianachumakova.com</a></div><div id="contact-address">18a busy street<br>toronto, ontario<br>m4m 1n8</p>'
+      }
+    };
+  </script>
+
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.5.0/jquery.js"></script>
+  <script>!window.jQuery && document.write(unescape('%3Cscript src="js/libs/jquery-1.5.0.js"%3E%3C/script%3E'))</script>
+
+  <!-- scripts concatenated and minified via ant build script-->
+  <script src="js/mylibs/underscore-1.1.4.js"></script>
+  <script src="js/plugins.js"></script>
+  <script src="js/script.js?v=7"></script>
+  <!-- end concatenated and minified scripts-->
+  
+  <!--[if lt IE 7 ]>
+    <script src="js/libs/dd_belatedpng.js"></script>
+    <script>DD_belatedPNG.fix('img, .png_bg'); // Fix any <img> or .png_bg bg-images. Also, please read goo.gl/mZiyb </script>
+  <![endif]-->
+
+  <script>
+    var _gaq=[['_setAccount','UA-21547483-1']];
+    (function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];g.async=1;
+    g.src=('https:'==location.protocol?'//ssl':'//www')+'.google-analytics.com/ga.js';
+    s.parentNode.insertBefore(g,s)}(document,'script'));
+  </script>
+</body>
+</html>

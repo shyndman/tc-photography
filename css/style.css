@@ -248,8 +248,8 @@ header {
   margin-top: 9px;
 }
 
-#download-cv h2 {
-  margin-bottom: 3px;
+#download-cv a {
+  color: #333;
 }
 
 #contact-email {
@@ -258,19 +258,19 @@ header {
 }
 
 #contact-email a {
-  color: #949494;
+  color: #333;
 }
 
-#photos .gallery-full, #commercial .gallery-full {
+#photos .gallery-full, #commercial .gallery-full, #greenpeace .gallery-full, #contact .gallery-full {
   margin-right: 50px;
   float: right;
 }
 
-#photos .gallery, #commercial .gallery {
+#photos .gallery, #commercial .gallery, #greenpeace .gallery {
   margin-left: 5px;
 }
 
-#photos .gallery-thumb, #commercial .gallery-thumb {
+#photos .gallery-thumb, #commercial .gallery-thumb, #greenpeace .gallery-thumb {
   margin: 0 0 20px 38px;
 }
 

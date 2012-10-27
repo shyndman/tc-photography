@@ -134,7 +134,6 @@ $(function() {
     // set the sidebar's content
     var content = "";
 
-    console.log('preparePageSidebar')
     switch (pageInfo["sidebar"]) {
     case "galleries":
       content = getGalleriesNav(pageInfo, pagePath);

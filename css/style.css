@@ -165,7 +165,7 @@ html, body {
 }
 
 #container {
-	width: 960px;
+	width: 990px;
 	margin: auto;
 	border: solid transparent 1px;
 }
@@ -199,6 +199,10 @@ header {
 	letter-spacing: 10px;
 	margin-left: 20px;
 	width: 250px;
+}
+
+#top-nav-links {
+  overflow-wrap: none;
 }
 
 #top-nav a.first {

@@ -331,7 +331,7 @@ p {
   top: 280px;
 }
 
-#sidebar .gallery-nav a {
+#sidebar .gallery-nav .photo-nextprev a {
   margin-right: 20px;
 }
 

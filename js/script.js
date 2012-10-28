@@ -73,7 +73,10 @@ $(function() {
 
       // get the part's page info
       if (pageInfo == null) pageInfo = tcp.siteContent[part];
-      else if (pageInfo["galleries"]) pageInfo = pageInfo.galleries[part];
+      else if (pageInfo["galleries"]) {
+        pageInfo = pageInfo.galleries[part];
+        curGalleryInfo = getGalleryInfo(pageInfo);
+      }
       else if (pageInfo["photos"]) {
         inPhotos = true;
         curGalleryInfo = getGalleryInfo(pageInfo, part);
@@ -95,7 +98,8 @@ $(function() {
 
       // prepare the sidebar if applicable (only last page in path gets a sidebar)
       if (isLast) {
-        preparePageSidebar(pageInfo, pagePath, pageInfoPath);
+        var sidebar = preparePageSidebar(pageInfo, pagePath, pageInfoPath);
+        pageDiv.css('min-height', sidebar.height() + 'px');
 
         //! this isn't very smart -- we should have a single child concept
         if (pageInfo["defaultHtml"]) {
@@ -103,6 +107,7 @@ $(function() {
         }
         else if (pageInfo["photos"]) {
           pageDiv.empty().append(getGalleryContent(pageInfo, pagePath));
+          positionGalleryNav(pageDiv);
         }
         else if (pageInfo["fullSrc"]) {
           pageDiv.empty().append(getPhotoContent(pageInfo, pagePath));
@@ -128,7 +133,7 @@ $(function() {
 
     if (!inPhotos && !pageInfo["sidebar"] && !pageInfo.sidebarHtml) {
       sidebar.addClass("hidden");
-      return;
+      return sidebar;
     }
 
     // set the sidebar's title
@@ -155,18 +160,21 @@ $(function() {
     if (inPhotos || isGallery) {
       var templateHtml = $('#gallery-nav-tmpl').html();
       content.append($(_.template(templateHtml, {
-        galleryAnchor: pageInfoPath[0].id,
-        galleryTitle: getPageTitle(pageInfoPath[0]),
+        sectionAnchor: pageInfoPath[0].id,
+        sectionTitle: getPageTitle(pageInfoPath[0]),
         mode: inPhotos ? 'photo' : 'gallery'
       })));
 
       content.find(".gallery-nav .photo-prev").click(showPreviousPhoto);
       content.find(".gallery-nav .photo-next").click(showNextPhoto);
       content.find(".gallery-nav .next-gal").click(showNextGallery);
+      content.find(".gallery-nav .back-to-gallery").click(showGallery);
     }
 
     sidebar.find(".content").empty().append(content);
     sidebar.removeClass("hidden");
+
+    return sidebar;
   };
 
   /** Gets the page title of the supplied pageInfo */
@@ -202,7 +210,13 @@ $(function() {
             style: 'display: none'
           };
 
-          navParent.append($("<a>", { text: group, class: 'header', 'data-group': group }));
+          var groupLink = $("<a>", { text: group, class: 'header', 'data-group': group })
+          if (childPageInfo.hoverImgSrc) {
+            groupLink.hover(
+              _.bind(onChildNavOver, null, childPageInfo, pageInfo),
+              $.noop);
+          }
+          navParent.append(groupLink);
         }
       } else {
         extraProps = {};
@@ -302,11 +316,15 @@ $(function() {
       // set timeout required to get width and height. not immediately available. we have
       // to wait until the image has been placed in the page.
       _.defer(function() {
-        $(".gallery-nav").css("top", photo.height() - 48).show();
+        positionGalleryNav(photo);
       });
     });
 
     return photo;
+  };
+
+  var positionGalleryNav = function(relativeTo) {
+    $(".gallery-nav").css("top", relativeTo.height() - 78).show();
   };
 
   /**
@@ -332,8 +350,6 @@ $(function() {
 
   /**
    * Shows the next photo.
-   *
-   * This is a function statement so it is available immediately in this scope.
    */
   function showNextPhoto() {
     var path = _.pluck(curPageInfoPath.slice(0, curPageInfoPath.length - 1), "id").join("/");
@@ -346,8 +362,6 @@ $(function() {
 
   /**
    * Shows the previous photo.
-   *
-   * This is a function statement so it is available immediately in this scope.
    */
   function showPreviousPhoto() {
     var path = _.pluck(curPageInfoPath.slice(0, curPageInfoPath.length - 1), "id").join("/");
@@ -360,13 +374,8 @@ $(function() {
 
   /**
    * Shows the next gallery.
-   *
-   * This is a function statement so it is available immediately in this scope.
    */
   function showNextGallery() {
-    if (!inPhotos)
-      return;
-
     var nextKey = getNextHashKey(
       curPageInfoPath[0].galleries,
       curGalleryInfo.gallery.id,
@@ -377,6 +386,19 @@ $(function() {
 
     return false;
   };
+
+  /**
+   * Shows the gallery the current photo belongs to.
+   */
+  function showGallery() {
+    if (!inPhotos)
+      return false;
+
+    var path = _.pluck(curPageInfoPath.slice(0, curPageInfoPath.length - 1), "id").join("/");
+    window.location.hash = path;
+
+    return false;
+  }
 
   /**
    * Gets the key before curKey, as found in hash
@@ -436,7 +458,6 @@ $(function() {
 
   $(document).keydown(function(evt) {
     if (!inPhotos) return true;
-
     switch (evt.which) {
     case 37:
       showPreviousPhoto();
@@ -444,7 +465,7 @@ $(function() {
     case 39:
       showNextPhoto();
       return false;
-    case 13:
+    case 27:
       showGallery();
       return false;
     }

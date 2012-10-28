@@ -119,8 +119,16 @@
         <a class="next-gal" href="#">next gallery</a>
       </div>
       <div>
-        <a class="back-to-gal" href="#<%= galleryAnchor %>">back to <%= galleryTitle %></a>
+        <% if (mode == 'photo') { %>
+          back to
+          <a class="back-to-gallery" href="#">thumbnails</a> /
+          <a class="back-to-section" href="#<%= sectionAnchor %>"><%= sectionTitle %></a>
+        <% } else { %>
+          <a class="back-to-section" href="#<%= sectionAnchor %>">back to <%= sectionTitle %></a>
+        <% } %>
       </div>
+      <hr>
+      <a class="follow-and-share" href="#">follow + share</a>
 
       <!--
       fb

@@ -269,7 +269,7 @@ header {
 
 .gallery {
   width: 720px;
-  margin-left: 45px; /* Margin so that gallery right edge lines up with full size image */
+  margin-left: 5px; /* Margin so that gallery right edge lines up with full size image */
 }
 
 #photos .gallery-thumb, #commercial .gallery-thumb, #greenpeace .gallery-thumb {

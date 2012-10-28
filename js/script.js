@@ -203,8 +203,11 @@ $(function() {
   };
 
   var getShareDescription = function(pageInfo) {
-    // Strip out HTML, and replace breaks with spaces
-    return $('<span>').html(pageInfo.sidebarHtml.replace('<br>', ' ')).text()
+    if (pageInfo.sidebarHtml)
+      // Strip out HTML, and replace breaks with spaces
+      return $('<span>').html(pageInfo.sidebarHtml.replace('<br>', ' ')).text()
+    else
+      return "";
   };
 
   /** Gets the page title of the supplied pageInfo */

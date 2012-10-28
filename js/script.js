@@ -1,6 +1,7 @@
 /* Author: Scott Hyndman */
 
 $(function() {
+
   // menu fade-in
 
   var menuLbl = $("#menu-label");
@@ -182,7 +183,7 @@ $(function() {
   };
 
   var getSharePageUrl = function(pageInfo) {
-    return window.location.toString();
+    return getBaseUrl() + window.location.hash;
   };
 
   var getShareMediaUrl = function(pageInfo) {
@@ -193,12 +194,17 @@ $(function() {
     else
       path = pageInfo["hoverImgSrc"]
 
+    return getBaseUrl() + path;
+  };
+
+  var getBaseUrl = function() {
     var loc = window.location;
-    return loc.protocol + "//" + loc.host + "/" + path;
+    return loc.protocol + "//" + loc.host + "/";
   };
 
   var getShareDescription = function(pageInfo) {
-    return "";
+    // Strip out HTML, and replace breaks with spaces
+    return $('<span>').html(pageInfo.sidebarHtml.replace('<br>', ' ')).text()
   };
 
   /** Gets the page title of the supplied pageInfo */
@@ -367,7 +373,7 @@ $(function() {
     }
   };
 
-  // initialize history management
+  // Initialize history management
   $.history.init(function(hash) {
     selectPage(hash == "" ? "intro" : hash);
   }, { unescape: ",/" });

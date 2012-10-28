@@ -132,12 +132,12 @@
       <div class="share-options" style="display: none">
         <iframe style="border:none; overflow:hidden; width:50px; height:21px;" scrolling="no" frameborder="0" allowTransparency="true"
                 src="//www.facebook.com/plugins/like.php?href=<%= sharePageUrl %>&amp;send=false&amp;layout=button_count&amp;width=80&amp;show_faces=false&amp;action=like&amp;colorscheme=light&amp;font&amp;height=21"></iframe>
-        <a href="http://pinterest.com/pin/create/button/?url=<%= sharePageUrl %>&media=<%= shareMediaUrl %>&description=<%= shareDescription %>" class="pin-it-button" count-layout="none">
+        <a href="http://pinterest.com/pin/create/button/?url=<%= sharePageUrl %>&media=<%= shareMediaUrl %>&description=<%= shareDescription %>" class="pin-it-button" target="_blank">
           <img border="0" src="//assets.pinterest.com/images/PinExt.png" title="Pin It" />
         </a>
-        <iframe allowtransparency="true" frameborder="0" scrolling="no"
+        <!--iframe allowtransparency="true" frameborder="0" scrolling="no"
                 src="https://platform.twitter.com/widgets/tweet_button.html?url=<%= sharePageUrl %>&count=none"
-                style="width:56px; height:20px; position: relative; top: -1px; margin-left: 2px;"></iframe>
+                style="width:56px; height:20px; position: relative; top: -1px; margin-left: 2px;"></iframe-->
       </div>
     </nav>
   </script>
@@ -1003,7 +1003,7 @@
   <!-- scripts concatenated and minified via ant build script-->
   <script src="js/mylibs/underscore-1.1.4.js"></script>
   <script src="js/plugins.js"></script>
-  <script src="js/script.js?v=9"></script>
+  <script src="js/script.js?v=18"></script>
   <!-- end concatenated and minified scripts-->
 
   <!--[if lt IE 7 ]>

@@ -162,19 +162,43 @@ $(function() {
       content.append($(_.template(templateHtml, {
         sectionAnchor: pageInfoPath[0].id,
         sectionTitle: getPageTitle(pageInfoPath[0]),
-        mode: inPhotos ? 'photo' : 'gallery'
+        mode: inPhotos ? 'photo' : 'gallery',
+        sharePageUrl: encodeURIComponent(getSharePageUrl(pageInfo)),
+        shareMediaUrl: encodeURIComponent(getShareMediaUrl(pageInfo)),
+        shareDescription: encodeURIComponent(getShareDescription(pageInfo))
       })));
 
       content.find(".gallery-nav .photo-prev").click(showPreviousPhoto);
       content.find(".gallery-nav .photo-next").click(showNextPhoto);
       content.find(".gallery-nav .next-gal").click(showNextGallery);
       content.find(".gallery-nav .back-to-gallery").click(popUrl);
+      content.find(".gallery-nav .follow-and-share").click(showShareOptions);
     }
 
     sidebar.find(".content").empty().append(content);
     sidebar.removeClass("hidden");
 
     return sidebar;
+  };
+
+  var getSharePageUrl = function(pageInfo) {
+    return window.location.toString();
+  };
+
+  var getShareMediaUrl = function(pageInfo) {
+    console.log(pageInfo);
+    var path;
+    if (pageInfo["fullSrc"])
+      path = pageInfo["fullSrc"];
+    else
+      path = pageInfo["hoverImgSrc"]
+
+    var loc = window.location;
+    return loc.protocol + "//" + loc.host + "/" + path;
+  };
+
+  var getShareDescription = function(pageInfo) {
+    return "";
   };
 
   /** Gets the page title of the supplied pageInfo */
@@ -400,6 +424,12 @@ $(function() {
     var path = _.pluck(curPageInfoPath.slice(0, curPageInfoPath.length - 1), "id").join("/");
     window.location.hash = path;
 
+    return false;
+  }
+
+  function showShareOptions() {
+    $(this).hide();
+    $(".gallery-nav .share-options").show();
     return false;
   }
 

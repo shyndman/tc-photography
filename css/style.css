@@ -343,6 +343,11 @@ p {
   margin-bottom: 8px;
 }
 
+.share-options {
+  position: relative;
+  top: -2px;
+}
+
 h2 {
   font-weight: normal;
   color: #333;

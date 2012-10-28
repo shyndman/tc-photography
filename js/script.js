@@ -207,7 +207,7 @@ $(function() {
     return pageInfo["title"] == undefined
       ? isNav ? pageIdParts[pageIdParts.length - 1] : pageIdParts.join(" - ")
       : pageInfo.title == "$use_parent"
-        ? getPageTitle(pageInfoPath[pageInfoPath.length - 2]) //! bug here if two $use_parents
+        ? getPageTitle(pageInfoPath[pageInfoPath.length - 2], pageInfoPath.slice(0, pageInfoPath.length - 1))
         : pageInfo.title;
   };
 

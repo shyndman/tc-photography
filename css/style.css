@@ -201,18 +201,21 @@ header {
 	width: 250px;
 }
 
-#top-nav-links {
-  overflow-wrap: none;
+#top-nav {
+  position: absolute;
+  left: 50%;
+  margin-top: 16px;
+  margin-left: -42px;
 }
 
-#top-nav a.first {
+#top-nav a:first-child {
 	margin-left: 17px;
 }
 
 #top-nav a {
 	display: block;
 	float: left;
-	margin-left: 27px;
+	margin-left: 22px;
 }
 
 #main {
@@ -270,12 +273,9 @@ header {
   float: right;
 }
 
-#photos .gallery, #commercial .gallery, #greenpeace .gallery {
-  margin-left: 5px;
-}
-
 .gallery {
   width: 720px;
+  margin-left: 45px; /* Margin so that gallery right edge lines up with full size image */
 }
 
 #photos .gallery-thumb, #commercial .gallery-thumb, #greenpeace .gallery-thumb {
@@ -290,7 +290,7 @@ header {
 }
 
 #page-title {
-  margin-top: 44px;
+  margin-top: 38px;
 	font-size: 10px;
 	letter-spacing: 4px;
 }
@@ -305,41 +305,41 @@ p {
 	margin-bottom: 10px;
 }
 
-#sidebar nav {
+#sidebar .main-nav {
   margin-top: -6px;
 }
 
-#sidebar nav a {
+#sidebar .main-nav a {
 	display: block;
 	padding: 6px 0;
 }
 
-#sidebar nav a.grouped {
+#sidebar .main-nav a.grouped {
   margin-left: 12px;
 }
 
-#sidebar nav a.header {
+#sidebar .main-nav a.header {
   cursor: pointer;
 }
 
-#sidebar nav a.commercial-link {
+#sidebar .main-nav a.commercial-link {
   margin-top: 398px;
 }
 
-#sidebar .photo-nav {
+#sidebar .gallery-nav {
   position: absolute;
   top: 280px;
 }
 
-#sidebar .photo-nav a {
+#sidebar .gallery-nav a {
   margin-right: 20px;
 }
 
-#sidebar .photo-nav div {
+#sidebar .gallery-nav div {
   margin-bottom: 6px;
 }
 
-#sidebar .photo-nav .photo-nav-nextprev {
+#sidebar .gallery-nav .photo-nextprev {
   margin-bottom: 8px;
 }
 

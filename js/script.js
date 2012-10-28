@@ -54,8 +54,6 @@ $(function() {
    * This method is a bit long and gross. Refactor target.
    */
   var selectPage = function(pagePath) {
-    log("navigating, page=" + pagePath)
-
     hidePrevPage();
 
     if (pagePath.charAt(pagePath.length - 1) == '/')
@@ -128,7 +126,7 @@ $(function() {
   var preparePageSidebar = function(pageInfo, pagePath, pageInfoPath) {
     var sidebar = $("#sidebar");
 
-    if (!pageInfo["sidebar"] && !pageInfo.sidebarHtml) {
+    if (!inPhotos && !pageInfo["sidebar"] && !pageInfo.sidebarHtml) {
       sidebar.addClass("hidden");
       return;
     }
@@ -137,35 +135,37 @@ $(function() {
     $("#page-title").html(getPageTitle(pageInfo, pageInfoPath));
 
     // set the sidebar's content
-    var content = "";
+    var content;
 
     switch (pageInfo["sidebar"]) {
     case "galleries":
-      content = getGalleriesNav(pageInfo, pagePath);
+      content = $(getGalleriesNav(pageInfo, pagePath));
       prepareGalleries(pageInfo)
       break;
     case "html":
     default:
-      content = pageInfo.sidebarHtml;
+      content = $('<div>');
+      content.append(pageInfo.sidebarHtml || '&nbsp;');
       break;
     }
 
-    if (inPhotos) {
-      // gah...templates would be way nicer
-      content +=
-        '<div class="photo-nav" style="display:none">' +
-          '<div class="photo-nav-nextprev"><a class="photo-nav-prev" href="#">&lt;</a> <a class="photo-nav-next" href="#">&gt;</a></div>' +
-          '<div><a class="photo-nav-next-gal" href="#">next gallery</a></div>' +
-          '<div><a class="photo-nav-back-to-gal" href="#' + pageInfoPath[0].id + '">back to ' + getPageTitle(pageInfoPath[0]) + '</a></div>' +
-        '</div>';
+    // Generate gallery navigation
+
+    var isGallery = pageInfo.photos !== undefined;
+    if (inPhotos || isGallery) {
+      var templateHtml = $('#gallery-nav-tmpl').html();
+      content.append($(_.template(templateHtml, {
+        galleryAnchor: pageInfoPath[0].id,
+        galleryTitle: getPageTitle(pageInfoPath[0]),
+        mode: inPhotos ? 'photo' : 'gallery'
+      })));
+
+      content.find(".gallery-nav .photo-prev").click(showPreviousPhoto);
+      content.find(".gallery-nav .photo-next").click(showNextPhoto);
+      content.find(".gallery-nav .next-gal").click(showNextGallery);
     }
 
     sidebar.find(".content").empty().append(content);
-    sidebar.find(".photo-nav-prev").click(showPreviousPhoto);
-    sidebar.find(".photo-nav-next").click(showNextPhoto);
-    sidebar.find(".photo-nav-next-gal").click(showNextGallery);
-
-    // show the sidebar
     sidebar.removeClass("hidden");
   };
 
@@ -183,7 +183,7 @@ $(function() {
    * Gets the nav node for the pageInfo's children
    */
   var getGalleriesNav = function(pageInfo, pagePath) {
-    var navParent = $("<nav>");
+    var navParent = $("<nav>", { class: "main-nav" });
     var first = true;
     var extraProps;
     var group = "";
@@ -301,9 +301,9 @@ $(function() {
     photo.load(function() {
       // set timeout required to get width and height. not immediately available. we have
       // to wait until the image has been placed in the page.
-      setTimeout(function() {
-        $(".photo-nav").css("top", photo.height() - 48).show();
-      }, 0);
+      _.defer(function() {
+        $(".gallery-nav").css("top", photo.height() - 48).show();
+      });
     });
 
     return photo;
@@ -443,6 +443,9 @@ $(function() {
       return false;
     case 39:
       showNextPhoto();
+      return false;
+    case 13:
+      showGallery();
       return false;
     }
 

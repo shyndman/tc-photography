@@ -34,8 +34,8 @@
           menu
         </div>
         <div id="top-nav-links" style="display:none">
-          <a href="#photos" id="nav-photos" class="first">personal</a>
-          <a href="#commercial" id="nav-photos" class="first">work</a>
+          <a href="#photos" id="nav-photos">personal</a>
+          <a href="#commercial" id="nav-photos">work</a>
           <a href="#bio" id="nav-bio">bio</a>
           <a href="#contact" id="nav-contact">contact</a>
         </div>
@@ -107,6 +107,31 @@
     </div>
   </div>
 
+  <script id="gallery-nav-tmpl" type="text/jst">
+    <nav class="gallery-nav" style="display:none">
+      <% if (mode == 'photo') { %>
+        <div class="photo-nextprev">
+          <a class="photo-prev" href="#">&lt;</a>
+          <a class="photo-next" href="#">&gt;</a>
+        </div>
+      <% } %>
+      <div>
+        <a class="next-gal" href="#">next gallery</a>
+      </div>
+      <div>
+        <a class="back-to-gal" href="#<%= galleryAnchor %>">back to <%= galleryTitle %></a>
+      </div>
+
+      <!--
+      fb
+      <iframe src="//www.facebook.com/plugins/like.php?href=http%3A%2F%2Ftatianachumakova.com%2Fimages%2Findex_banana.jpg&amp;send=false&amp;layout=button_count&amp;width=80&amp;show_faces=false&amp;action=like&amp;colorscheme=light&amp;font&amp;height=21" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:80px; height:21px;" allowTransparency="true"></iframe>
+
+      pinterest
+      <a href="http://pinterest.com/pin/create/button/?url=http%3A%2F%2Fwww.tatianachumakova.com&media=http%3A%2F%2Ftatianachumakova.com%2Fimages%2Findex_banana.jpg" class="pin-it-button" count-layout="none"><img border="0" src="//assets.pinterest.com/images/PinExt.png" title="Pin It" /></a>
+      -->
+    </nav>
+  </script>
+
   <!-- Site content -->
   <script>
     tcp = {}; // package to avoid window pollution
@@ -117,7 +142,7 @@
         title: 'photo projects',
         sidebar: 'galleries',
         navLink: 'nav-photos',
-        defaultHtml: '<a href="#photos/mounds - fall"><img src="images/slices/banana.jpg" alt="Mounds cover image" class="gallery-full"></a>',
+        defaultHtml: '<a href="#photos/slices 2012"><img src="images/slices/banana.jpg" alt="Mounds cover image" class="gallery-full"></a>',
 
         galleries: {
           "slices 2012": {
@@ -540,67 +565,56 @@
                 fullSrc: 'images/food/pomegranate.jpg',
                 thumbSrc: 'images/food/pomegranate.thumb.jpg',
                 title: '$use_parent',
-                sidebarHtml: '&nbsp;'
               },
               "sluis": {
                 fullSrc: 'images/food/sluis.jpg',
                 thumbSrc: 'images/food/sluis.thumb.jpg',
                 title: '$use_parent',
-                sidebarHtml: '&nbsp;'
               },
               "salad": {
                 fullSrc: 'images/food/salad.jpg',
                 thumbSrc: 'images/food/salad.thumb.jpg',
                 title: '$use_parent',
-                sidebarHtml: '&nbsp;'
               },
               "sandwich": {
                 fullSrc: 'images/food/sandwich.jpg',
                 thumbSrc: 'images/food/sandwich.thumb.jpg',
                 title: '$use_parent',
-                sidebarHtml: '&nbsp;'
               },
               "wakamama": {
                 fullSrc: 'images/food/wakamama.jpg',
                 thumbSrc: 'images/food/wakamama.thumb.jpg',
                 title: '$use_parent',
-                sidebarHtml: '&nbsp;'
               },
               "radishes": {
                 fullSrc: 'images/food/radishes.jpg',
                 thumbSrc: 'images/food/radishes.thumb.jpg',
                 title: '$use_parent',
-                sidebarHtml: '&nbsp;'
               },
               "bakedTomatoes": {
                 fullSrc: 'images/food/bakedTomatoes.jpg',
                 thumbSrc: 'images/food/bakedTomatoes.thumb.jpg',
                 title: '$use_parent',
-                sidebarHtml: '&nbsp;'
               },
               "mushroomsInPan": {
                 fullSrc: 'images/food/MushroomsInPan.jpg',
                 thumbSrc: 'images/food/MushroomsInPan.thumb.jpg',
                 title: '$use_parent',
-                sidebarHtml: '&nbsp;'
               },
               "MushroomTofuKaleSandwich": {
                 fullSrc: 'images/food/MushroomTofuKaleSandwich.jpg',
                 thumbSrc: 'images/food/MushroomTofuKaleSandwich.thumb.jpg',
                 title: '$use_parent',
-                sidebarHtml: '&nbsp;'
               },
               "soup": {
                 fullSrc: 'images/food/soup.jpg',
                 thumbSrc: 'images/food/soup.thumb.jpg',
                 title: '$use_parent',
-                sidebarHtml: '&nbsp;'
               },
               "springLasagna": {
                 fullSrc: 'images/food/springLasagna.jpg',
                 thumbSrc: 'images/food/springLasagna.thumb.jpg',
                 title: '$use_parent',
-                sidebarHtml: '&nbsp;'
               }
             }
           },
@@ -619,7 +633,6 @@
                 fullSrc: 'images/place/comrade_02.jpg',
                 thumbSrc: 'images/place/comrade_02.thumb.jpg',
                 title: '$use_parent',
-                sidebarHtml: '&nbsp;'
               },
               "comrade_03": {
                 fullSrc: 'images/place/comrade_03.jpg',
@@ -668,13 +681,11 @@
                 fullSrc: 'images/product/sneakers.jpg',
                 thumbSrc: 'images/product/sneakers.thumb.jpg',
                 title: '$use_parent',
-                sidebarHtml: '&nbsp;'
               },
               "bridgestone": {
                 fullSrc: 'images/product/bridgestone.jpg',
                 thumbSrc: 'images/product/bridgestone.thumb.jpg',
                 title: '$use_parent',
-                sidebarHtml: '&nbsp;'
               }
             }
           },
@@ -692,61 +703,51 @@
                 fullSrc: 'images/Greenpeace/Darlington/Darlington_01.jpg',
                 thumbSrc: 'images/Greenpeace/Darlington/Darlington_01.thumb.jpg',
                 title: '$use_parent',
-                sidebarHtml: '&nbsp;'
               },
               "Darlington_02": {
                 fullSrc: 'images/Greenpeace/Darlington/Darlington_02.jpg',
                 thumbSrc: 'images/Greenpeace/Darlington/Darlington_02.thumb.jpg',
                 title: '$use_parent',
-                sidebarHtml: '&nbsp;'
               },
               "Darlington_03": {
                 fullSrc: 'images/Greenpeace/Darlington/Darlington_03.jpg',
                 thumbSrc: 'images/Greenpeace/Darlington/Darlington_03.thumb.jpg',
                 title: '$use_parent',
-                sidebarHtml: '&nbsp;'
               },
               "Darlington_04": {
                 fullSrc: 'images/Greenpeace/Darlington/Darlington_04.jpg',
                 thumbSrc: 'images/Greenpeace/Darlington/Darlington_04.thumb.jpg',
                 title: '$use_parent',
-                sidebarHtml: '&nbsp;'
               },
               "Darlington_05": {
                 fullSrc: 'images/Greenpeace/Darlington/Darlington_05.jpg',
                 thumbSrc: 'images/Greenpeace/Darlington/Darlington_05.thumb.jpg',
                 title: '$use_parent',
-                sidebarHtml: '&nbsp;'
               },
               "Darlington_06": {
                 fullSrc: 'images/Greenpeace/Darlington/Darlington_06.jpg',
                 thumbSrc: 'images/Greenpeace/Darlington/Darlington_06.thumb.jpg',
                 title: '$use_parent',
-                sidebarHtml: '&nbsp;'
               },
               "Darlington_07": {
                 fullSrc: 'images/Greenpeace/Darlington/Darlington_07.jpg',
                 thumbSrc: 'images/Greenpeace/Darlington/Darlington_07.thumb.jpg',
                 title: '$use_parent',
-                sidebarHtml: '&nbsp;'
               },
               "Darlington_08": {
                 fullSrc: 'images/Greenpeace/Darlington/Darlington_08.jpg',
                 thumbSrc: 'images/Greenpeace/Darlington/Darlington_08.thumb.jpg',
                 title: '$use_parent',
-                sidebarHtml: '&nbsp;'
               },
               "Darlington_09": {
                 fullSrc: 'images/Greenpeace/Darlington/Darlington_09.jpg',
                 thumbSrc: 'images/Greenpeace/Darlington/Darlington_09.thumb.jpg',
                 title: '$use_parent',
-                sidebarHtml: '&nbsp;'
               },
               "Darlington_10": {
                 fullSrc: 'images/Greenpeace/Darlington/Darlington_10.jpg',
                 thumbSrc: 'images/Greenpeace/Darlington/Darlington_10.thumb.jpg',
                 title: '$use_parent',
-                sidebarHtml: '&nbsp;'
               }
             }
           },
@@ -763,85 +764,71 @@
                 fullSrc: 'images/Greenpeace/Enbridge/Enbridge_01.jpg',
                 thumbSrc: 'images/Greenpeace/Enbridge/Enbridge_01.thumb.jpg',
                 title: '$use_parent',
-                sidebarHtml: '&nbsp;'
               },
               "Enbridge_02": {
                 fullSrc: 'images/Greenpeace/Enbridge/Enbridge_02.jpg',
                 thumbSrc: 'images/Greenpeace/Enbridge/Enbridge_02.thumb.jpg',
                 title: '$use_parent',
-                sidebarHtml: '&nbsp;'
               },
               "Enbridge_03": {
                 fullSrc: 'images/Greenpeace/Enbridge/Enbridge_03.jpg',
                 thumbSrc: 'images/Greenpeace/Enbridge/Enbridge_03.thumb.jpg',
                 title: '$use_parent',
-                sidebarHtml: '&nbsp;'
               },
               "Enbridge_04": {
                 fullSrc: 'images/Greenpeace/Enbridge/Enbridge_04.jpg',
                 thumbSrc: 'images/Greenpeace/Enbridge/Enbridge_04.thumb.jpg',
                 title: '$use_parent',
-                sidebarHtml: '&nbsp;'
               },
               "Enbridge_05": {
                 fullSrc: 'images/Greenpeace/Enbridge/Enbridge_05.jpg',
                 thumbSrc: 'images/Greenpeace/Enbridge/Enbridge_05.thumb.jpg',
                 title: '$use_parent',
-                sidebarHtml: '&nbsp;'
               },
               "Enbridge_06": {
                 fullSrc: 'images/Greenpeace/Enbridge/Enbridge_06.jpg',
                 thumbSrc: 'images/Greenpeace/Enbridge/Enbridge_06.thumb.jpg',
                 title: '$use_parent',
-                sidebarHtml: '&nbsp;'
               },
               "Enbridge_07": {
                 fullSrc: 'images/Greenpeace/Enbridge/Enbridge_07.jpg',
                 thumbSrc: 'images/Greenpeace/Enbridge/Enbridge_07.thumb.jpg',
                 title: '$use_parent',
-                sidebarHtml: '&nbsp;'
               },
               "Enbridge_08": {
                 fullSrc: 'images/Greenpeace/Enbridge/Enbridge_08.jpg',
                 thumbSrc: 'images/Greenpeace/Enbridge/Enbridge_08.thumb.jpg',
                 title: '$use_parent',
-                sidebarHtml: '&nbsp;'
               },
               "Enbridge_09": {
                 fullSrc: 'images/Greenpeace/Enbridge/Enbridge_09.jpg',
                 thumbSrc: 'images/Greenpeace/Enbridge/Enbridge_09.thumb.jpg',
                 title: '$use_parent',
-                sidebarHtml: '&nbsp;'
               },
               "Enbridge_10": {
                 fullSrc: 'images/Greenpeace/Enbridge/Enbridge_10.jpg',
                 thumbSrc: 'images/Greenpeace/Enbridge/Enbridge_10.thumb.jpg',
                 title: '$use_parent',
-                sidebarHtml: '&nbsp;'
               },
               "Enbridge_11": {
                 fullSrc: 'images/Greenpeace/Enbridge/Enbridge_11.jpg',
                 thumbSrc: 'images/Greenpeace/Enbridge/Enbridge_11.thumb.jpg',
                 title: '$use_parent',
-                sidebarHtml: '&nbsp;'
               },
               "Enbridge_12": {
                 fullSrc: 'images/Greenpeace/Enbridge/Enbridge_12.jpg',
                 thumbSrc: 'images/Greenpeace/Enbridge/Enbridge_12.thumb.jpg',
                 title: '$use_parent',
-                sidebarHtml: '&nbsp;'
               },
               "Enbridge_13": {
                 fullSrc: 'images/Greenpeace/Enbridge/Enbridge_13.jpg',
                 thumbSrc: 'images/Greenpeace/Enbridge/Enbridge_13.thumb.jpg',
                 title: '$use_parent',
-                sidebarHtml: '&nbsp;'
               },
               "Enbridge_14": {
                 fullSrc: 'images/Greenpeace/Enbridge/Enbridge_14.jpg',
                 thumbSrc: 'images/Greenpeace/Enbridge/Enbridge_14.thumb.jpg',
                 title: '$use_parent',
-                sidebarHtml: '&nbsp;'
               }
             }
           },
@@ -856,73 +843,61 @@
                 fullSrc: 'images/Greenpeace/CalgaryTower/CalgaryTower_01.jpg',
                 thumbSrc: 'images/Greenpeace/CalgaryTower/CalgaryTower_01.thumb.jpg',
                 title: '$use_parent',
-                sidebarHtml: '&nbsp;'
               },
               "CalgaryTower_02": {
                 fullSrc: 'images/Greenpeace/CalgaryTower/CalgaryTower_02.jpg',
                 thumbSrc: 'images/Greenpeace/CalgaryTower/CalgaryTower_02.thumb.jpg',
                 title: '$use_parent',
-                sidebarHtml: '&nbsp;'
               },
               "CalgaryTower_03": {
                 fullSrc: 'images/Greenpeace/CalgaryTower/CalgaryTower_03.jpg',
                 thumbSrc: 'images/Greenpeace/CalgaryTower/CalgaryTower_03.thumb.jpg',
                 title: '$use_parent',
-                sidebarHtml: '&nbsp;'
               },
               "CalgaryTower_04": {
                 fullSrc: 'images/Greenpeace/CalgaryTower/CalgaryTower_04.jpg',
                 thumbSrc: 'images/Greenpeace/CalgaryTower/CalgaryTower_04.thumb.jpg',
                 title: '$use_parent',
-                sidebarHtml: '&nbsp;'
               },
               "CalgaryTower_05": {
                 fullSrc: 'images/Greenpeace/CalgaryTower/CalgaryTower_05.jpg',
                 thumbSrc: 'images/Greenpeace/CalgaryTower/CalgaryTower_05.thumb.jpg',
                 title: '$use_parent',
-                sidebarHtml: '&nbsp;'
               },
               "CalgaryTower_06": {
                 fullSrc: 'images/Greenpeace/CalgaryTower/CalgaryTower_06.jpg',
                 thumbSrc: 'images/Greenpeace/CalgaryTower/CalgaryTower_06.thumb.jpg',
                 title: '$use_parent',
-                sidebarHtml: '&nbsp;'
               },
               "CalgaryTower_07": {
                 fullSrc: 'images/Greenpeace/CalgaryTower/CalgaryTower_07.jpg',
                 thumbSrc: 'images/Greenpeace/CalgaryTower/CalgaryTower_07.thumb.jpg',
                 title: '$use_parent',
-                sidebarHtml: '&nbsp;'
               },
               "CalgaryTower_08": {
                 fullSrc: 'images/Greenpeace/CalgaryTower/CalgaryTower_08.jpg',
                 thumbSrc: 'images/Greenpeace/CalgaryTower/CalgaryTower_08.thumb.jpg',
                 title: '$use_parent',
-                sidebarHtml: '&nbsp;'
               },
               "CalgaryTower_09": {
                 fullSrc: 'images/Greenpeace/CalgaryTower/CalgaryTower_09.jpg',
                 thumbSrc: 'images/Greenpeace/CalgaryTower/CalgaryTower_09.thumb.jpg',
                 title: '$use_parent',
-                sidebarHtml: '&nbsp;'
               },
               "CalgaryTower_10": {
                 fullSrc: 'images/Greenpeace/CalgaryTower/CalgaryTower_10.jpg',
                 thumbSrc: 'images/Greenpeace/CalgaryTower/CalgaryTower_10.thumb.jpg',
                 title: '$use_parent',
-                sidebarHtml: '&nbsp;'
               },
               "CalgaryTower_11": {
                 fullSrc: 'images/Greenpeace/CalgaryTower/CalgaryTower_11.jpg',
                 thumbSrc: 'images/Greenpeace/CalgaryTower/CalgaryTower_11.thumb.jpg',
                 title: '$use_parent',
-                sidebarHtml: '&nbsp;'
               },
               "CalgaryTower_12": {
                 fullSrc: 'images/Greenpeace/CalgaryTower/CalgaryTower_12.jpg',
                 thumbSrc: 'images/Greenpeace/CalgaryTower/CalgaryTower_12.thumb.jpg',
                 title: '$use_parent',
-                sidebarHtml: '&nbsp;'
               }
             }
           },
@@ -938,67 +913,56 @@
                 fullSrc: 'images/Greenpeace/OPG/OPG_01.jpg',
                 thumbSrc: 'images/Greenpeace/OPG/OPG_01.thumb.jpg',
                 title: '$use_parent',
-                sidebarHtml: '&nbsp;'
               },
               "OPG_02": {
                 fullSrc: 'images/Greenpeace/OPG/OPG_02.jpg',
                 thumbSrc: 'images/Greenpeace/OPG/OPG_02.thumb.jpg',
                 title: '$use_parent',
-                sidebarHtml: '&nbsp;'
               },
               "OPG_03": {
                 fullSrc: 'images/Greenpeace/OPG/OPG_03.jpg',
                 thumbSrc: 'images/Greenpeace/OPG/OPG_03.thumb.jpg',
                 title: '$use_parent',
-                sidebarHtml: '&nbsp;'
               },
               "OPG_04": {
                 fullSrc: 'images/Greenpeace/OPG/OPG_04.jpg',
                 thumbSrc: 'images/Greenpeace/OPG/OPG_04.thumb.jpg',
                 title: '$use_parent',
-                sidebarHtml: '&nbsp;'
               },
               "OPG_05": {
                 fullSrc: 'images/Greenpeace/OPG/OPG_05.jpg',
                 thumbSrc: 'images/Greenpeace/OPG/OPG_05.thumb.jpg',
                 title: '$use_parent',
-                sidebarHtml: '&nbsp;'
               },
               "OPG_06": {
                 fullSrc: 'images/Greenpeace/OPG/OPG_06.jpg',
                 thumbSrc: 'images/Greenpeace/OPG/OPG_06.thumb.jpg',
                 title: '$use_parent',
-                sidebarHtml: '&nbsp;'
               },
               "OPG_07": {
                 fullSrc: 'images/Greenpeace/OPG/OPG_07.jpg',
                 thumbSrc: 'images/Greenpeace/OPG/OPG_07.thumb.jpg',
                 title: '$use_parent',
-                sidebarHtml: '&nbsp;'
               },
               "OPG_08": {
                 fullSrc: 'images/Greenpeace/OPG/OPG_08.jpg',
                 thumbSrc: 'images/Greenpeace/OPG/OPG_08.thumb.jpg',
                 title: '$use_parent',
-                sidebarHtml: '&nbsp;'
               },
               "OPG_09": {
                 fullSrc: 'images/Greenpeace/OPG/OPG_09.jpg',
                 thumbSrc: 'images/Greenpeace/OPG/OPG_09.thumb.jpg',
                 title: '$use_parent',
-                sidebarHtml: '&nbsp;'
               },
               "OPG_10": {
                 fullSrc: 'images/Greenpeace/OPG/OPG_10.jpg',
                 thumbSrc: 'images/Greenpeace/OPG/OPG_10.thumb.jpg',
                 title: '$use_parent',
-                sidebarHtml: '&nbsp;'
               },
               "OPG_11": {
                 fullSrc: 'images/Greenpeace/OPG/OPG_11.jpg',
                 thumbSrc: 'images/Greenpeace/OPG/OPG_11.thumb.jpg',
                 title: '$use_parent',
-                sidebarHtml: '&nbsp;'
               }
             }
           }

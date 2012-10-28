@@ -342,7 +342,8 @@ $(function() {
   var getPhotoContent = function(pageInfo, pagePath) {
     var photo = $("<img>", {
       src: pageInfo.fullSrc,
-      "class": "gallery-full"
+      "class": "gallery-full",
+      click: showNextPhoto
     });
 
     photo.load(function() {

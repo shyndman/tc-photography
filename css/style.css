@@ -318,10 +318,8 @@ p {
   margin-left: 12px;
 }
 
-#sidebar nav h4 {
-  color: #9B9B9B;
-	padding: 6px 0;
-	font-weight: normal;
+#sidebar nav a.header {
+  cursor: pointer;
 }
 
 #sidebar nav a.commercial-link {

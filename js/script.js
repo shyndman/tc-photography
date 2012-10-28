@@ -38,7 +38,12 @@ $(function() {
 
   $("#top-nav").hover(showMenu, hideMenu);
 
+  $("body").on("click", "#sidebar nav a.header", function() {
+    $("." + $(this).data("group") + "-group").fadeToggle();
+  });
+
   // navigation
+
   var curGalleryInfo = null;
   var inPhotos = false;
   var curPageInfoPath = null;
@@ -180,7 +185,8 @@ $(function() {
   var getGalleriesNav = function(pageInfo, pagePath) {
     var navParent = $("<nav>");
     var first = true;
-    var group, linkCls = "";
+    var extraProps;
+    var group = "";
 
     for (var childId in pageInfo.galleries) {
       var childPageInfo = pageInfo.galleries[childId];
@@ -191,18 +197,21 @@ $(function() {
       if (groupAndId.length == 2) {
         if (group != groupAndId[0]) { // insert a group header
           group = groupAndId[0];
-          linkCls = "grouped";
-          navParent.append($("<h4>", { text: group }));
+          extraProps = {
+            class: 'grouped ' + group + '-group',
+            style: 'display: none'
+          };
+
+          navParent.append($("<a>", { text: group, class: 'header', 'data-group': group }));
         }
       } else {
-        linkCls = "";
+        extraProps = {};
       }
 
-      var navLink = $("<a>", {
+      var navLink = $("<a>", _.extend({
         href: childPageInfo.href ? childPageInfo.href : "#" + pagePath + "/" + childId,
         text: getPageTitle(childPageInfo, null, true),
-        className: linkCls
-      });
+      }, extraProps));
 
       // custom CSS class
       if (childPageInfo.navCssClass != undefined) {

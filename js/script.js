@@ -168,7 +168,7 @@ $(function() {
       content.find(".gallery-nav .photo-prev").click(showPreviousPhoto);
       content.find(".gallery-nav .photo-next").click(showNextPhoto);
       content.find(".gallery-nav .next-gal").click(showNextGallery);
-      content.find(".gallery-nav .back-to-gallery").click(showGallery);
+      content.find(".gallery-nav .back-to-gallery").click(popUrl);
     }
 
     sidebar.find(".content").empty().append(content);
@@ -352,6 +352,8 @@ $(function() {
    * Shows the next photo.
    */
   function showNextPhoto() {
+    if (!inPhotos) return true;
+
     var path = _.pluck(curPageInfoPath.slice(0, curPageInfoPath.length - 1), "id").join("/");
     path += "/" + getNextPhotoId();
 
@@ -364,6 +366,8 @@ $(function() {
    * Shows the previous photo.
    */
   function showPreviousPhoto() {
+    if (!inPhotos) return true;
+
     var path = _.pluck(curPageInfoPath.slice(0, curPageInfoPath.length - 1), "id").join("/");
     path += "/" + getPreviousPhotoId();
 
@@ -388,11 +392,10 @@ $(function() {
   };
 
   /**
-   * Shows the gallery the current photo belongs to.
+   * Shows the URL above this one in the stack
    */
-  function showGallery() {
-    if (!inPhotos)
-      return false;
+  function popUrl() {
+    if (curPageInfoPath.length == 1) return false;
 
     var path = _.pluck(curPageInfoPath.slice(0, curPageInfoPath.length - 1), "id").join("/");
     window.location.hash = path;
@@ -457,7 +460,6 @@ $(function() {
   // keyboard navigation
 
   $(document).keydown(function(evt) {
-    if (!inPhotos) return true;
     switch (evt.which) {
     case 37:
       showPreviousPhoto();
@@ -466,7 +468,7 @@ $(function() {
       showNextPhoto();
       return false;
     case 27:
-      showGallery();
+      popUrl();
       return false;
     }
 

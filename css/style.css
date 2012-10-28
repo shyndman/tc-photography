@@ -165,7 +165,7 @@ html, body {
 }
 
 #container {
-	width: 990px;
+	width: 960px;
 	margin: auto;
 	border: solid transparent 1px;
 }
@@ -185,13 +185,14 @@ header {
 }
 
 #top-nav {
+  position: absolute;
+  left: 50%;
+  margin: 16px 0 0 -34px;
+  padding: 20px 0px;
   font-size: 10px;
-	color: #9B9B9B;
-	letter-spacing: 6px;
-	height: 12px;
-	margin: 24px 0 0 0;
-	padding: 20px 0px;
-	float: left;
+  color: #9B9B9B;
+  letter-spacing: 6px;
+  height: 12px;
 }
 
 #menu-label {
@@ -199,13 +200,6 @@ header {
 	letter-spacing: 10px;
 	margin-left: 20px;
 	width: 250px;
-}
-
-#top-nav {
-  position: absolute;
-  left: 50%;
-  margin-top: 16px;
-  margin-left: -42px;
 }
 
 #top-nav a:first-child {

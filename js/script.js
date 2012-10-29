@@ -2,7 +2,7 @@
 
 $(function() {
 
-  // menu fade-in
+  // Menu fade-in
 
   var menuLbl = $("#menu-label");
   var pageTitle = $("#page-title");
@@ -39,6 +39,9 @@ $(function() {
 
   $("#top-nav").hover(showMenu, hideMenu);
 
+  /**
+   * Toggles the a group of nav links based on a header press.
+   */
   $("body").on("click", "#sidebar nav a.header", function() {
     $("." + $(this).data("group") + "-group").fadeToggle();
   });
@@ -50,9 +53,7 @@ $(function() {
   var curPageInfoPath = null;
 
   /**
-   * Performs faux navigation to the supplied path.
-   *
-   * This method is a bit long and gross. Refactor target.
+   * Performs single-page style navigation to the supplied path.
    */
   var selectPage = function(pagePath) {
     hidePrevPage();
@@ -337,7 +338,7 @@ $(function() {
   };
 
   /**
-   * Gets jQuery wrapped DOM elements for a photo page.
+   * Gets a jQuery wrapped image element for a photo page.
    */
   var getPhotoContent = function(pageInfo, pagePath) {
     var photo = $("<img>", {
@@ -347,7 +348,7 @@ $(function() {
     });
 
     photo.load(function() {
-      // set timeout required to get width and height. not immediately available. we have
+      // defer required to get width and height. not immediately available. we have
       // to wait until the image has been placed in the page.
       _.defer(function() {
         positionGalleryNav(photo);
@@ -385,7 +386,7 @@ $(function() {
   /**
    * Shows the next photo.
    */
-  function showNextPhoto() {
+  var showNextPhoto = function() {
     if (!inPhotos) return true;
 
     var path = _.pluck(curPageInfoPath.slice(0, curPageInfoPath.length - 1), "id").join("/");
@@ -399,7 +400,7 @@ $(function() {
   /**
    * Shows the previous photo.
    */
-  function showPreviousPhoto() {
+  var showPreviousPhoto = function() {
     if (!inPhotos) return true;
 
     var path = _.pluck(curPageInfoPath.slice(0, curPageInfoPath.length - 1), "id").join("/");
@@ -413,7 +414,7 @@ $(function() {
   /**
    * Shows the next gallery.
    */
-  function showNextGallery() {
+  var showNextGallery = function() {
     var nextKey = getNextHashKey(
       curPageInfoPath[0].galleries,
       curGalleryInfo.gallery.id,
@@ -428,7 +429,7 @@ $(function() {
   /**
    * Shows the URL above this one in the stack
    */
-  function popUrl() {
+  var popUrl = function() {
     if (curPageInfoPath.length == 1) return false;
 
     var path = _.pluck(curPageInfoPath.slice(0, curPageInfoPath.length - 1), "id").join("/");
@@ -437,7 +438,10 @@ $(function() {
     return false;
   }
 
-  function showShareOptions() {
+  /**
+   * Shows the ways the current page can be shared with social media
+   */
+  var showShareOptions = function() {
     $(this).hide();
     $(".gallery-nav .share-options").show();
     return false;
@@ -483,8 +487,6 @@ $(function() {
 
   /**
    * Gets the identifier of the previous photo in the current gallery
-   *
-   * This is a function statement so it is available higher up
    */
   var getPreviousPhotoId = function() {
     return getPreviousHashKey(curGalleryInfo.gallery.photos,
@@ -497,7 +499,7 @@ $(function() {
       curPageInfoPath[curPageInfoPath.length - 1].id);
   };
 
-  // keyboard navigation
+  // Keyboard navigation
 
   $(document).keydown(function(evt) {
     switch (evt.which) {
